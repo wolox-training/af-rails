@@ -1,2 +1,1 @@
-################   Carpetas a ignorar   #######################
-wbooks/test/*
+wbooks-api/test/*
