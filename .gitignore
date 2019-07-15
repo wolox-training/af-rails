@@ -10,8 +10,7 @@
 # Ignore all logfiles and tempfiles.
 /test/*
 /log/*.log
-/tmp/*
-
+/tmp
 
 /node_modules
 /yarn-error.log
