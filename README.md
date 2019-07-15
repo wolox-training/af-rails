@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# Configuration Travis CI
+
+[![Build Status](https://travis-ci.org/wolox-training/af-rails.svg?branch=integration-travisCI)](https://travis-ci.org/wolox-training/af-rails)
