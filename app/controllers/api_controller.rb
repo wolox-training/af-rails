@@ -1,3 +1,3 @@
 class ApiController < ApplicationController
-    include DeviseTokenAuth::Concerns::SetUserByToken
-  end
+  include DeviseTokenAuth::Concerns::SetUserByToken
+end
