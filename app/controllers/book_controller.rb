@@ -1,12 +1,11 @@
 class BookController < ApiController
-  before_action :set_book, only: [:show]
+  include Wor::Paginate
 
   def index
-    @books = Book.all
-    render json: @books, each_serializer: BookSerializer
+    render_paginated Book, each_serializer: BookSerializer
   end
 
   def show
-    render json: @book, serializer: BookSerializer
+    render_paginated Book, each_serializer: BookSerializer
   end
 end
