@@ -4,4 +4,4 @@ class BookSerializer < ActiveModel::Serializer
   def links
     { self: book_path(object.id) }
   end
-  end
+end

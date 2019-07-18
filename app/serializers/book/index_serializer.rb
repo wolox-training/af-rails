@@ -1,3 +1,2 @@
-class Book::ShowSerializer < BookSerializer
-  root 'book'
-  end
+class Book < BookSerializer::IndexSerializer
+end
