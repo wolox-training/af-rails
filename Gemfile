@@ -35,6 +35,7 @@ gem 'shoulda-matchers', '~> 3.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'wor-paginate'
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
