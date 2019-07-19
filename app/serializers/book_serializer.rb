@@ -6,5 +6,4 @@ class BookSerializer < ActiveModel::Serializer
   attribute :title
   attribute :editor
   attribute :year
-  
 end
