@@ -5,6 +5,6 @@ FactoryBot.define do
     image { Faker::String.random }
     title { Faker::Book.title }
     editor { Faker::Book.publisher }
-    year { (Time.zone.today - Faker::Number.number(3).to_i.days).to_s }
+    year { Faker::Date.forward(23).to_s }
   end
 end
