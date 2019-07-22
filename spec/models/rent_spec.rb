@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Rent do
-  subject(:rent) { create(:rent) }
+  subject(:rent) { build(:rent) }
 
   it { is_expected.to be_valid }
   it { is_expected.to belong_to(:user) }
