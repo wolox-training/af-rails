@@ -6,12 +6,7 @@ class BookController < ApiController
   end
 
   def show
-    id = show_params
-    if id.to_i.!= 0
-      render json: Book.find(id), status: :ok
-    else
-      render json: 'Eror en tipo de Id'
-    end
+    render json: Book.find(show_params), status: :ok
   end
 
   private
