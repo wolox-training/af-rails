@@ -27,7 +27,7 @@ before_install:
   - gem update --system
 
 script:
-  # - bundle exec rspec spec -fd
+  - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
 
 cache:

@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise_token_auth', '~> 1.0.0'
+gem 'shoulda-matchers', '~> 3.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,6 +43,13 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'rubocop', '~> 0.65.0', require: false
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~>  3.8.2'
+  gem 'faker'
+  gem 'factory_bot', '~>  5.0.2'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do
