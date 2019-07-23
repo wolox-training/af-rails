@@ -34,6 +34,7 @@ gem 'devise_token_auth', '~> 1.0.0'
 gem 'shoulda-matchers', '~> 3.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'wor-paginate'
+gem 'versionist'
 
 
 # Use Capistrano for deployment
