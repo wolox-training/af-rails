@@ -2,7 +2,6 @@ module Api
   module V1
     class RentController < ApiController
       include Wor::Paginate
-
       before_action :authenticate_user!
 
       def index
@@ -10,7 +9,7 @@ module Api
       end
 
       def create
-        @rent = Rent.new(current_user, rent_params)
+        @rent = Rent.new(rent_params.merge(user_id: current_user.id))
         if @rent.save
           render json: @rent, status: :created
         else
