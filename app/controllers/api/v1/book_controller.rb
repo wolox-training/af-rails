@@ -3,7 +3,7 @@ module Api
     class BookController < ApiController
       include Wor::Paginate
 
-      #before_action :authenticate_user!
+      before_action :authenticate_user!
 
       def index
         render_paginated Book, each_serializer: BookSerializer

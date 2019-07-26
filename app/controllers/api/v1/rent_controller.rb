@@ -3,7 +3,7 @@ module Api
     class RentController < ApiController
       include Wor::Paginate
   
-      #before_action :authenticate_user!
+      before_action :authenticate_user!
         
       @new_user
 
@@ -12,7 +12,8 @@ module Api
       end
   
       def create
-        @rent = Rent.new(rent_params)
+        byebug
+        @rent = Rent.new(current_user, rent_params)
         if @rent.save
           render json: @rent, status: :created
         else
@@ -22,7 +23,7 @@ module Api
   
       private
         def rent_params
-          params.require(:user_id, :book_id, :start_date, :end_date)
+          params.permit(:book_id, :start_date, :end_date)
         end
     end
   end
