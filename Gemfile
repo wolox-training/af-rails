@@ -9,6 +9,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
+gem 'dotenv-rails', groups: [:development, :test]
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -35,6 +36,9 @@ gem 'shoulda-matchers', '~> 3.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'wor-paginate'
 gem 'versionist'
+gem 'redis-rails'
+gem 'sidekiq'
+
 
 
 # Use Capistrano for deployment

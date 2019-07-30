@@ -2,6 +2,7 @@ module Api
   module V1
     class RentController < ApiController
       include Wor::Paginate
+      require 'rent_worker'
       before_action :authenticate_user!
 
       def index
@@ -12,6 +13,7 @@ module Api
         @rent = Rent.new(rent_params.merge(user_id: current_user.id))
         if @rent.save
           render json: @rent, status: :created
+          RentAddWorker.perform_async
         else
           render json: @rent.errors, status: :unprocessable_entity
         end
