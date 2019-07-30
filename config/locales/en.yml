@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  creation_date: "Creation Date"
+  book_name: "Book Name"
+  book_author: "Book author"
+  book_gender: "Book gender"
+  book_editor: "Book editor"
+  book_year: "Book year"
+  start_date: "Start Date"
+  end_date: "End Date"

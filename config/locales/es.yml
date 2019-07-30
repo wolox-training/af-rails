@@ -1,0 +1,9 @@
+es:
+  creation_date: "Fecha de creación"
+  book_name: "Título"
+  book_author: "Autor"
+  book_gender: "Género"
+  book_editor: "Editorial"
+  book_year: "Año publicado"
+  start_date: "Inicio del prestamo"
+  end_date: "Fin del prestamo"
