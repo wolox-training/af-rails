@@ -35,6 +35,8 @@ gem 'shoulda-matchers', '~> 3.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'wor-paginate'
 gem 'versionist'
+gem 'sidekiq', '~> 5.2.7'
+
 
 
 # Use Capistrano for deployment
