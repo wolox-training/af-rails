@@ -37,8 +37,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'wor-paginate'
 gem 'versionist'
 gem 'redis-rails'
-gem 'sidekiq'
-
+gem 'sidekiq', '~> 5.2.7'
 
 
 # Use Capistrano for deployment
