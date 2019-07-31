@@ -3,7 +3,7 @@ class RentMailer < ApplicationMailer
     email = User.find(rent.user_id).email
     book = Book.find(rent.book_id)
 
-    @greeting = "Creation Date: #{rent.created_at}\n  Book Name: #{book.title}\n  Book author: #{book.author}\n  Book gender: #{book.gender}\n  Book editor: #{book.editor}\n  Book year: #{book.year}\n  Start Date: #{rent.start_date}\n  End Date: #{rent.end_date}"
+    @message = {"creation_date" => rent.created_at, "book_name" => book.title, "book_author" => book.author, "book_gender" => book.gender, "book_editor" => book.editor, "book_year" => book.year, "start_date" => rent.start_date, "end_date" => rent.end_date}
 
     mail to: email
   end

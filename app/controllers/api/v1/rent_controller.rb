@@ -13,7 +13,7 @@ module Api
         @rent = Rent.new(rent_params.merge(user_id: current_user.id))
         if @rent.save
           render json: @rent, status: :created
-          RentAddWorker.perform_async
+          RentWorker.perform_async
         else
           render json: @rent.errors, status: :unprocessable_entity
         end
