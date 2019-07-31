@@ -4,6 +4,7 @@ class RentWorker
 
   def perform
     rent = Rent.last
-    RentMailer.creation_rent(rent).deliver # _later
+    I18n.locale = rent.user.locale
+    RentMailer.creation_rent(rent).deliver_later
   end
 end

@@ -1,7 +1,7 @@
 class RentMailer < ApplicationMailer
   def creation_rent(rent)
-    email = User.find(rent.user_id).email
-    book = Book.find(rent.book_id)
+    email = rent.user.email
+    book = rent.book
 
     @message = { 'creation_date' => rent.created_at, 'book_name' => book.title,
                  'book_author' => book.author, 'book_gender' => book.gender,

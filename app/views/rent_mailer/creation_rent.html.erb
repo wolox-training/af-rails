@@ -1,13 +1,12 @@
 <h1>Rent#creation_rent</h1>
 
 <p>
-  <%= "Createin Date: #{@message["creation_date"]} \n"  %>
-  <%= "Book Name: #{@message["book_name"]} \n" %>
-  <%= "Book Author: #{@message["book_author"]} \n" %>
-  <%= "Book Gender: #{@message["book_gender"]} \n" %>
-  <%= "Book Editor: #{@message["book_editor"]} \n" %>
-  <%= "Book Year: #{@message["book_year"]} \n" %>
-  <%= "Start Date: #{@message["start_date"]} \n" %>
-  <%= "End Date: #{@message["end_date"]} \n" %>
-
+  <%= "#{t('creation_date')} #{@message["creation_date"]}" %>
+  <%= "#{t('book_name')} #{@message["book_name"]}" %>
+  <%= "#{t('book_author')} #{@message["book_author"]}" %>
+  <%= "#{t('book_gender')} #{@message["book_gender"]}" %>
+  <%= "#{t('book_editor')} #{@message["book_editor"]}" %>
+  <%= "#{t('book_year')} #{@message["book_year"]}" %>
+  <%= "#{t('start_date')} #{@message["start_date"]}" %>
+  <%= "#{t('end_date')} #{@message["end_date"]}" %>
 </p>
