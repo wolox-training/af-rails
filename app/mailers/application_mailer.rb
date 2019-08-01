@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: 'c6aa7633de-4e2615@inbox.mailtrap.io'
+  default from: Rails.application.secrets.user_from
   layout 'mailer'
 end
