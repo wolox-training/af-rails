@@ -1,5 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe SuggestionBook, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe SuggestionBook do
+  subject(:suggestion_book) { create(:suggestion_book) }
+
+  it { is_expected.to be_valid }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to validate_presence_of(:author) }
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:link) }
+  it { is_expected.to validate_presence_of(:editor) }
+  it { is_expected.to validate_presence_of(:year) }
+  it { is_expected.to validate_presence_of(:user) }
 end
