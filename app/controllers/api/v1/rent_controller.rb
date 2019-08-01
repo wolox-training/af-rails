@@ -6,7 +6,9 @@ module Api
       before_action :authenticate_user!
 
       def index
-        render_paginated Rent.where(user_id: current_user.id), each_serializer: RentSerializer
+        @query = policy_scope(Rent)
+        #render_paginated Rent.where(user_id: current_user.id), each_serializer: RentSerializer
+        render_paginated @query, each_serializer: RentSerializer
       end
 
       def create
@@ -24,6 +26,7 @@ module Api
       def rent_params
         params.permit(:book_id, :start_date, :end_date)
       end
+
     end
   end
 end
