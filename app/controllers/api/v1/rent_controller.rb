@@ -7,7 +7,7 @@ module Api
 
       def index
         @query = policy_scope(Rent)
-        #render_paginated Rent.where(user_id: current_user.id), each_serializer: RentSerializer
+        # render_paginated Rent.where(user_id: current_user.id), each_serializer: RentSerializer
         render_paginated @query, each_serializer: RentSerializer
       end
 
@@ -26,7 +26,6 @@ module Api
       def rent_params
         params.permit(:book_id, :start_date, :end_date)
       end
-
     end
   end
 end
