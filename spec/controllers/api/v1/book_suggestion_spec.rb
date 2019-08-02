@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Api::V1::SuggestionBookController,
          type: :controller do
-  include_context 'Authenticated User'
 
   describe 'POST #create' do
     context 'When creating a vaild suggestion book' do
