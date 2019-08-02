@@ -4,6 +4,6 @@ class RentWorker
 
   def perform
     rent = Rent.last
-    RentMailer.creation_rent(rent).deliver # _later
+    RentMailer.creation_rent(rent).deliver_later
   end
 end
