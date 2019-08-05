@@ -5,8 +5,7 @@ module Api
       before_action :authenticate_user!
 
       def index
-        @query = policy_scope(Rent)
-        render_paginated @query, each_serializer: RentSerializer
+        render_paginated Rent.where(user_id: current_user.id), each_serializer: RentSerializer
       end
 
       def create
