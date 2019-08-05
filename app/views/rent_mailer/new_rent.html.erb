@@ -1,0 +1,15 @@
+<h1><%="#{t('mail_title')}: " %><%= @user.email %></h1>
+
+<hr>
+  <h2><%="#{t('message_title')}" %></h2>
+  <p><%="#{t('message_text')}:" %></p>
+  <ul>
+    <li><%="#{t('book_name')}: " %><%=@book.title %></li>
+    <li><%="#{t('book_gender')}: " %><%=@book.gender %></li>
+    <li><%="#{t('book_author')}: " %><%=@book.author %></li>
+    <li><%="#{t('book_editor')}: " %><%=@book.editor %></li>
+    <li><%="#{t('book_year')}: " %><%=@book.year %></li>
+    <li><%="#{t('start_date')}: " %><%=@rent.start_date %></li>
+    <li><%="#{t('end_date')}: " %><%=@rent.end_date %></li>
+  </ul>
+</hr>

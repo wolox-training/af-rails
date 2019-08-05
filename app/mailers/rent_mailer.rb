@@ -1,13 +1,13 @@
 class RentMailer < ApplicationMailer
-  def creation_rent(rent)
-    email = rent.user.email
-    book = rent.book
-
-    @message = { 'creation_date' => rent.created_at, 'book_name' => book.title,
-                 'book_author' => book.author, 'book_gender' => book.gender,
-                 'book_editor' => book.editor, 'book_year' => book.year,
-                 'start_date' => rent.start_date, 'end_date' => rent.end_date }
-
-    mail to: email
+  def new_rent(rent_id)
+    @rent = Rent.find(rent_id)
+    @user = User.find(@rent.user_id)
+    @book = Book.find(@rent.book_id)
+    mail to: @user.email
+    if @user.locale == 'en'
+      mail subject: 'New rent information'
+    else
+      mail subject: 'Información de nuevo rent'
+    end
   end
 end
