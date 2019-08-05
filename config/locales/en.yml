@@ -30,6 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  subject: "New rent information"
   mail_title: "New rent registered for"
   message_title: "Thank you for your purchase"
   message_text: "Here is the rent information"
