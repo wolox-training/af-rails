@@ -1,4 +1,7 @@
 es:
+  mail_title: "Nuevo rent registrado para"
+  message_title: "Gracias por la compra"
+  message_text: "Aqui está la información del rent"
   creation_date: "Fecha de creación"
   book_name: "Título"
   book_author: "Autor"
