@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :set_locale
+  include Pundit
+  protect_from_forgery
 
+  before_action :set_locale
   protect_from_forgery with: :null_session
 
   def set_locale
