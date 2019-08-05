@@ -12,6 +12,7 @@ module Api
         @rent = Rent.new(rent_params.merge(user_id: current_user.id))
         if @rent.save
           render json: @rent, status: :created
+          RentMailer.new_rent(@rent.id).deliver_later
         else
           render json: @rent.errors, status: :unprocessable_entity
         end
