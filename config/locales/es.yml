@@ -1,6 +1,6 @@
 es:
   subject: "Información de nuevo rent"
-  mail_title: "Nuevo rent registrado para: "
+  mail_title: "Nuevo alquiler registrado para: "
   message_title: "Gracias por la compra"
   message_text: "Aqui está la información del rent: "
   creation_date: "Fecha de creación: "
