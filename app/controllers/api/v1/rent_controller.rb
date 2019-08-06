@@ -5,12 +5,12 @@ module Api
       before_action :authenticate_user!
 
       def index
-        @query = policy_scope(Rent)
-        render_paginated @query, each_serializer: RentSerializer
+        render_paginated policy_scope(Rent), each_serializer: RentSerializer
       end
 
       def create
         @rent = Rent.new(rent_params.merge(user_id: current_user.id))
+        authorize @rent
         if @rent.save
           render json: @rent, status: :created
           RentMailer.new_rent(@rent.id).deliver_later
