@@ -7,6 +7,6 @@ class User < ApplicationRecord
   # :recoverable, :rememberable, :validatable
   devise :database_authenticatable, :trackable, :registerable
   has_many :rent, dependent: :destroy
-  has_many :suggestion_book, dependent: :destroy
+  has_many :book_suggestion, dependent: :destroy
   validates :first_name, :last_name, presence: true
 end
