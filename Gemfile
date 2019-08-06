@@ -38,6 +38,7 @@ gem 'wor-paginate'
 gem 'versionist'
 gem 'redis-rails'
 gem 'sidekiq', '~> 5.2.7'
+gem 'pundit', '~> 2.0.1'
 
 
 # Use Capistrano for deployment
