@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe SuggestionBook do
-  subject(:suggestion_book) { create(:suggestion_book) }
+describe BookSuggestion do
+  subject(:book_suggestion) { build_stubbed(:book_suggestion) }
 
   it { is_expected.to be_valid }
   it { is_expected.to belong_to(:user) }
@@ -10,5 +10,4 @@ describe SuggestionBook do
   it { is_expected.to validate_presence_of(:link) }
   it { is_expected.to validate_presence_of(:editor) }
   it { is_expected.to validate_presence_of(:year) }
-  it { is_expected.to validate_presence_of(:user) }
 end

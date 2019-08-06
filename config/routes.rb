@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   api_version(module: 'api/v1', path: { value: 'api/v1' }, defaults: { format: :json }) do
     resources :book, only: [:index, :show]
     resources :rent, only: [:index, :create]
-    resources :suggestion_book, only: [:create]
+    resources :book_suggestion, only: [:create]
   end
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
