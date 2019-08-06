@@ -4,4 +4,8 @@ class RentPolicy < ApplicationPolicy
       scope.where(user_id: user)
     end
   end
+
+  def create?
+    record.user == user
+  end
 end
