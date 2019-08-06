@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   include DeviseTokenAuth::Concerns::SetUserByToken
+  include Pundit
   before_action :set_locale
 
   private
