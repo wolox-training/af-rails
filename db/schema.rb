@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20190801141921) do
     t.string "link", null: false
     t.string "editor", null: false
     t.string "year", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_suggestion_books_on_user_id"
