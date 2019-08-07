@@ -1,11 +1,10 @@
 module Api
   module V1
-    class ApiBookController < ApiController
+    class OpenLibraryController < ApiController
       include Wor::Paginate
-      require 'open_library'
 
       def show
-        OpenLibrary.search_book(show_params)
+        render json: OpenLibrary::BookSearch.execute(show_params), status: :ok
       end
 
       private
