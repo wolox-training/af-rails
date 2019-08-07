@@ -4,7 +4,9 @@ module Api
       include Wor::Paginate
 
       def create
-        @book_suggestion = BookSuggestion.new(book_suggestion_params)
+        @book_suggestion = BookSuggestion.new(
+          book_suggestion_params(params.require(:book_suggestion))
+        )
         if @book_suggestion.save
           render json: @book_suggestion, status: :created
         else
@@ -14,8 +16,8 @@ module Api
 
       private
 
-      def book_suggestion_params
-        params.permit(:user_id, :synopsis, :price, :author, :title, :link, :editor, :year)
+      def book_suggestion_params(book_suggestion)
+        book_suggestion.permit(:user_id, :synopsis, :price, :author, :title, :link, :editor, :year)
       end
     end
   end
