@@ -10,7 +10,7 @@ module Api
         if @book_suggestion.save
           render json: @book_suggestion, status: :created
         else
-          render json: @book_suggestion.errors, status: :unprocessable_entity
+          render json: { errors: @book_suggestion.errors }, status: :unprocessable_entity
         end
       end
 
