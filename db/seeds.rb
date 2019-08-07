@@ -9,9 +9,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Rent.delete_all if (Rent.count != 0)
+SuggestionBook.delete_all if (SuggestionBook.count != 0)
 User.delete_all if (User.count != 0)
 Book.delete_all if (Book.count != 0)
 
 user = User.create!(first_name: "alex", last_name: "falcon", email: "alex@hotmail.com", password: "123456789", locale: "es", confirmed_at: Time.zone.now)
 book = Book.create!(gender: "Metafiction", author: "Carlene Prosacco", image: "http://ziemann.net/andrea.cain", title: "Frequent Hearses", editor: "Tate Publishing \u0026 Enterprises", year: "2019-08-13")
-Rent.create!(user_id: user.id, book_id: book.id, start_date: Date.today, end_date: Date.today)
+Rent.create(user_id: user.id, book_id: book.id, start_date: Date.today, end_date: Date.today)
+SuggestionBook.create!(user_id: user.id, synopsis: "Una gran sinopsis", price: 15.3, author: "Yo soy", title: "Mi otro yo", link: "www.yoyo.com", editor: "Obveo que yo", year: "2019")
