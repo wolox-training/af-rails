@@ -19,7 +19,7 @@ describe Api::V1::BookSuggestionController,
     end
 
     context 'When creating an invalid suggestion book' do
-      subject(:http_request) { post :create, params: { book_suggestion: new_book_suggestion} }
+      subject(:http_request) { post :create, params: { book_suggestion: new_book_suggestion } }
       let(:new_book_suggestion) { attributes_for(:book_suggestion, title: nil) }
 
       it 'doesn\'t create a new rent' do
@@ -28,7 +28,7 @@ describe Api::V1::BookSuggestionController,
 
       it 'returns error messages' do
         http_request
-        expect(JSON.parse(response.body)["errors"]).to be_present
+        expect(JSON.parse(response.body)['errors']).to be_present
       end
 
       it 'responds with unprocessable_entity status' do
