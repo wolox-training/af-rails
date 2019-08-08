@@ -3,8 +3,9 @@ require 'rails_helper'
 describe OpenLibrary::BookSearch,
          type: :services do
 
-    it 'makes an external request' do
-        WebMock.disable!
-        OpenLibrary::BookSearch.execute("0385472579")
-    end
+  it 'makes an external request' do
+    WebMock.disable!
+    expect(OpenLibrary::BookSearch.execute('0385472579')['TITLE'] == 'Zen speaks')
+      .target == true
+  end
 end
