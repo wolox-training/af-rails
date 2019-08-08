@@ -4,7 +4,7 @@ describe OpenLibrary::BookSearch,
          type: :services do
 
     it 'makes an external request' do
+        WebMock.disable!
         OpenLibrary::BookSearch.execute("0385472579")
-
     end
 end
