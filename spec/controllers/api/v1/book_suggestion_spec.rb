@@ -9,37 +9,30 @@ describe Api::V1::BookSuggestionController,
       let(:new_book_suggestion) { attributes_for(:book_suggestion) }
 
       it 'creates a new suggestion book' do
-        post :create, params: { book_suggestion: new_book_suggestion }
         expect { http_request }.to change { BookSuggestion.count }.by(1)
       end
 
-      it 'responds with 201 status' do
-        post :create, params: { book_suggestion: new_book_suggestion }
+      it 'responds with created status' do
+        http_request
         expect(response).to have_http_status(:created)
       end
     end
 
     context 'When creating an invalid suggestion book' do
-      subject(:http_request) { post :create, params: { book_suggestion: new_book_suggestion } }
-      let(:new_book_suggestion) { attributes_for(:book_suggestion) }
-
-      before do
-        new_book_suggestion[:author] = nil
-      end
+      subject(:http_request) { post :create, params: { book_suggestion: new_book_suggestion} }
+      let(:new_book_suggestion) { attributes_for(:book_suggestion, title: nil) }
 
       it 'doesn\'t create a new rent' do
-        expect do
-          post :create, params: { book_suggestion: new_book_suggestion }
-        end.to change { BookSuggestion.count }.by(0)
+        expect { http_request }.not_to change(BookSuggestion, :count)
       end
 
       it 'returns error messages' do
-        post :create, params: { book_suggestion: new_book_suggestion }
-        expect(response.success?) == false
+        http_request
+        expect(JSON.parse(response.body)["errors"]).to be_present
       end
 
-      it 'responds with 422 status' do
-        post :create, params: { book_suggestion: new_book_suggestion }
+      it 'responds with unprocessable_entity status' do
+        http_request
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
