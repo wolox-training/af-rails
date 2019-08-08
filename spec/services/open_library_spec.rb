@@ -5,7 +5,7 @@ describe OpenLibrary::BookSearch,
 
   it 'makes an external request' do
     mocked_book_request_success
-    expect(OpenLibrary::BookSearch.execute('0385472579')['TITLE'] == 'Zen speaks')
+    expect(OpenLibrary::BookSearch.execute('0385472579')['title'] == 'Zen speaks')
       .target == true
   end
 end
