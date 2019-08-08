@@ -1,14 +1,14 @@
 module OpenLibrary
   class BookSearch < Base
-    def self.execute(number_isbn)
-      isbn = "ISBN:#{number_isbn}"
-      response = get('/api/books', query: { bibkeys: isbn })
-      @my_book = {
-        isbn: number_isbn,
-        title: response.parsed_response[isbn]['title'],
-        subtitle: response.parsed_response[isbn]['subtitle'],
-        number_of_pages: response.parsed_response[isbn]['number_of_pages'],
-        authors: response.parsed_response[isbn]['authors']
+    def self.execute(isbn_number)
+      isbn = "ISBN:#{isbn_number}"
+      response = get('/api/books', query: { bibkeys: isbn }).parsed_response[isbn]
+      {
+        isbn: isbn_number,
+        title: response['title'],
+        subtitle: response['subtitle'],
+        number_of_pages: response['number_of_pages'],
+        authors: response['authors']
       }
     end
   end
