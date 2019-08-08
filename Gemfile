@@ -40,6 +40,8 @@ gem 'redis-rails'
 gem 'sidekiq', '~> 5.2.7'
 gem 'pundit', '~> 2.0.1'
 gem 'httparty'
+gem 'sidekiq-scheduler'
+
 
 
 # Use Capistrano for deployment
