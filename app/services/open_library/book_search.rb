@@ -5,7 +5,7 @@ module OpenLibrary
       response = get('/api/books', query: { bibkeys: isbn })
       @my_book = {
         isbn: number_isbn,
-        title: response.parsed_response[isbn]['name'],
+        title: response.parsed_response[isbn]['title'],
         subtitle: response.parsed_response[isbn]['subtitle'],
         number_of_pages: response.parsed_response[isbn]['number_of_pages'],
         authors: response.parsed_response[isbn]['authors']
