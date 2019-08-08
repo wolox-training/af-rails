@@ -4,16 +4,21 @@ module OpenLibrary
       isbn = "ISBN:#{isbn_number}"
       response = get('/api/books', query: { bibkeys: isbn }).parsed_response[isbn]
       if response.nil?
-        "El libro no existe"
-      else
-        {
-          isbn: isbn_number,
-          title: response['title'],
-          subtitle: response['subtitle'],
-          number_of_pages: response['number_of_pages'],
-          authors: response['authors']
-        }
+        raise ::Errors::OpenLibrary::BookNotFound.new,
+              "The book with id #{isbn_number} not found"
       end
+      create_hash(isbn_number, response['title'], response['subtitle'],
+                  response['number_of_pages'], response['authors'])
+    end
+
+    def create_hash(isbn_number, title, subtitle, nop, authors)
+      {
+        isbn: isbn_number,
+        title: title,
+        subtitle: subtitle,
+        number_of_pages: nop,
+        authors: authors
+      }
     end
   end
 end
