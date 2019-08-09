@@ -1,3 +1,9 @@
 :queues:
   - default
   - mailers
+
+:schedule:
+  expired_rent:
+    cron: '* * 0 * * *'   # Runs once per minute
+    class: ExpiredRent
+

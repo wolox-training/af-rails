@@ -1,0 +1,10 @@
+<h1><%="#{t('mail_title_expired_rent')}: " %><%= @user.email %></h1>
+
+<hr>
+  <h2><%=t('message_title_expired_rent')%></h2>
+  <p><%=t('message_text_expired_rent')%></p>
+  <ul>
+    <li><%=t('book_name')%><%=@book.title %></li>
+    <li><%=t('end_date')%><%=@rent.end_date %></li>
+  </ul>
+</hr>

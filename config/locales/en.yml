@@ -42,3 +42,7 @@ en:
   book_year: "Book year: "
   start_date: "Start Date: "
   end_date: "End Date: "
+  subject_expired_mail: "Rent information to expire"
+  mail_title_expired_rent: "Expired Rent"
+  message_title_expired_rent: "The rent expired to day"
+  message_text_expired_rent: "The next rent is about to expire: "

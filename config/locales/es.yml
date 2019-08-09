@@ -11,3 +11,7 @@ es:
   book_year: "Año publicado: "
   start_date: "Inicio del prestamo: "
   end_date: "Fin del prestamo: "
+  subject_expired_mail: "Información del alquiler a vencer"
+  mail_title_expired_rent: "Vencimiento de Alquiler"
+  message_title_expired_rent: "El alquiler vence hoy"
+  message_text_expired_rent: "El siguiente alquiler está próximo a vencer: "
