@@ -55,7 +55,8 @@ describe Api::V1::OpenLibraryController, type: :controller do
       end
 
       it 'response with message error' do
-        expect(JSON.parse(response.body)['errors']).to eq 'The book with ISBN: 0385472579 could not be found'
+        expect(JSON.parse(response.body)['errors'])
+          .to eq 'The book with ISBN: 0385472579 could not be found'
       end
     end
   end
