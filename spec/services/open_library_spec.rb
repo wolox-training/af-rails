@@ -4,8 +4,8 @@ describe OpenLibrary::BookSearch,
          type: :services do
 
   it 'makes an external request' do
-    WebMock.disable!
-    expect(OpenLibrary::BookSearch.execute('0385472579')['TITLE'] == 'Zen speaks')
+    book_request_success
+    expect(OpenLibrary::BookSearch.execute('0385472579')['title'] == 'Zen speaks')
       .target == true
   end
 end

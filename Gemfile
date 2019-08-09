@@ -39,9 +39,8 @@ gem 'versionist'
 gem 'redis-rails'
 gem 'sidekiq', '~> 5.2.7'
 gem 'pundit', '~> 2.0.1'
-gem 'httparty'
 gem 'sidekiq-scheduler'
-
+gem 'httparty', '~> 0.16.4'
 
 
 # Use Capistrano for deployment

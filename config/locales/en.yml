@@ -30,6 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  services:
+    open_library:
+      errors:
+        book_not_found: "The book with ISBN: %{isbn_number} could not be found"
   subject: "New rent information"
   mail_title: "New rent registered for: "
   message_title: "Thank you for your purchase"

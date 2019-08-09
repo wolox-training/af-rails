@@ -1,4 +1,8 @@
 es:
+  services:
+    open_library:
+      errors:
+        book_not_found: "El libro con ISBN: %{isbn_number} no existe"
   subject: "Información de nuevo rent"
   mail_title: "Nuevo alquiler registrado para: "
   message_title: "Gracias por la compra"
