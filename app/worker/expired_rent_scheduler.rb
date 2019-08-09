@@ -1,6 +1,6 @@
 require 'sidekiq-scheduler'
 
-class ExpiredRent
+class ExpiredRentScheduler
   include Sidekiq::Worker
 
   def perform
@@ -8,4 +8,5 @@ class ExpiredRent
       ExpiredRent.expired_rent(rent.id)
     end
   end
+  
 end
