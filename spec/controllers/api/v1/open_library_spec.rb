@@ -10,7 +10,8 @@ describe Api::V1::OpenLibraryController, type: :controller do
       end
 
       it 'response with a book hash' do
-        expect(JSON.parse(response.body)).to match_array %w[isbn title subtitle number_of_pages authors ]
+        expect(JSON.parse(response.body).keys)
+          .to match_array %w[isbn title subtitle number_of_pages authors]
       end
 
       it 'returns the book title' do
@@ -26,7 +27,7 @@ describe Api::V1::OpenLibraryController, type: :controller do
       end
 
       it 'returns the book number_of_pages' do
-        expect(JSON.parse(response.body)['number_of_pages']) == 159
+        expect(JSON.parse(response.body)['number_of_pages']).to eq 159
       end
 
       it 'returns the book authors' do
