@@ -1,5 +1,5 @@
 module MockHelper
-  def mocked_book_request_success
+  def book_request_success
     stub_request(:get, /books/)
       .to_return(
         status: 200,
