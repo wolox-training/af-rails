@@ -11,7 +11,7 @@ module OpenLibrary
                   response['number_of_pages'], response['authors'])
     end
 
-    def create_hash(isbn_number, title, subtitle, number_of_pages, authors)
+    def self.create_hash(isbn_number, title, subtitle, number_of_pages, authors)
       {
         isbn: isbn_number,
         title: title,
