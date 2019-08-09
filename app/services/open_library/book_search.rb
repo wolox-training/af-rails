@@ -5,7 +5,7 @@ module OpenLibrary
       response = get('/api/books', query: { bibkeys: isbn }).parsed_response[isbn]
       if response.nil?
         raise Errors::OpenLibrary::BookNotFound.new,
-          I18n.t('services.open_library.errors.book_not_found', isbn_number: isbn_number)
+              I18n.t('services.open_library.errors.book_not_found', isbn_number: isbn_number)
       end
       create_hash(isbn_number, response['title'], response['subtitle'],
                   response['number_of_pages'], response['authors'])
