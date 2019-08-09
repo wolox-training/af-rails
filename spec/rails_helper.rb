@@ -32,7 +32,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 # Require all shared contexts
-Dir[Rails.root.join('spec', 'support', 'shared_context', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 # Require all factories
 Dir[Rails.root.join('spec', 'factories', '*.rb')].each { |f| require f }
 
@@ -40,6 +40,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.file_fixture_path = Rails.root.join('spec', 'support', 'fixtures')
+  config.include MockHelper
   # Include devise to controller specs
   config.include Devise::Test::ControllerHelpers, type: :controller
 
@@ -91,7 +92,5 @@ RSpec.configure do |config|
 
   # FactoryBot config
   config.include FactoryBot::Syntax::Methods
-  config.before(:all) do
-    FactoryBot.reload
-  end
+  config.before(:all) { FactoryBot.reload }
 end

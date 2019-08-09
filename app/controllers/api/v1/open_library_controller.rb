@@ -3,6 +3,8 @@ module Api
     class OpenLibraryController < ApiController
       include Wor::Paginate
 
+      before_action :authenticate_user!
+
       def show
         render json: OpenLibrary::BookSearch.execute(show_params), status: :ok
       end
