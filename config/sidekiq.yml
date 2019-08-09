@@ -4,6 +4,6 @@
 
 :schedule:
   expired_rent:
-    cron: '0 * * * * *'   # Runs once per minute
+    cron: "0 10 * * * America/Argentina/Buenos_Aires"
     class: ExpiredRentScheduler
 
