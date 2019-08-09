@@ -43,5 +43,20 @@ describe Api::V1::OpenLibraryController, type: :controller do
         expect(response).to have_http_status(:ok)
       end
     end
+
+    context 'When fetching a books that dont exist on external api' do
+      before do
+        book_request_not_found
+        get :show, params: { id: '0385472579' }
+      end
+
+      it 'response with 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'response with message error' do
+        expect(JSON.parse(response.body)['errors']).to eq 'The book with ISBN: 0385472579 could not be found'
+      end
+    end
   end
 end
