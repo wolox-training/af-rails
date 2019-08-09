@@ -1,7 +1,12 @@
 class ApiController < ApplicationController
+  rescue_from Errors::OpenLibrary::BookNotFound, with: :book_not_found
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
   before_action :set_locale
+
+  def book_not_found(exception)
+    render json: { errors: exception.message }, status: :not_found
+  end
 
   private
 
