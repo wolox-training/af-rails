@@ -3,7 +3,7 @@ FactoryBot.define do
     gender { Faker::Book.genre }
     author { Faker::Book.author }
     image { Faker::Internet.url }
-    title { Faker::Book.title[0..25] }
+    title { Faker::Book.title.truncate(25) }
     editor { Faker::Book.publisher }
     year { Faker::Date.forward(23) }
   end
