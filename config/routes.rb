@@ -1,8 +1,11 @@
 # frozen_string_literal: true
+require 'sidekiq/web'
+require 'sidekiq-scheduler/web'
 
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
-  
+  mount Sidekiq::Web, at: 'sidekiq'
+
   api_version(module: 'api/v1', path: { value: 'api/v1' }, defaults: { format: :json }) do
     resources :book, only: [:index, :show]
     resources :rent, only: [:index, :create]
