@@ -5,7 +5,7 @@ class ExpiredRentScheduler
 
   def perform
     Rent.expired.each do |rent|
-      RentMailer.expired_rent(rent.id)
+      RentMailer.expired_rent(rent.id).deliver_later
     end
   end
 end
