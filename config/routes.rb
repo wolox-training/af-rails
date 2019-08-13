@@ -3,6 +3,7 @@ require 'sidekiq/web'
 require 'sidekiq-scheduler/web'
 
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount_devise_token_auth_for 'User', at: 'auth'
   mount Sidekiq::Web, at: 'sidekiq'
 
