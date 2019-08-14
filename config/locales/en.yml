@@ -34,6 +34,9 @@ en:
     open_library:
       errors:
         book_not_found: "The book with ISBN: %{isbn_number} could not be found"
+    rent:
+      errors:
+        rent_creation: "Creation rent by book id: %{book_id} failed"
   subject: "New rent information"
   mail_title: "New rent registered for: "
   message_title: "Thank you for your purchase"

@@ -42,6 +42,7 @@ gem 'pundit', '~> 2.0.1'
 gem 'sidekiq-scheduler'
 gem 'httparty', '~> 0.16.4'
 gem 'rails_admin', '~> 2.0.0.rc'
+gem "interactor", "~> 3.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
