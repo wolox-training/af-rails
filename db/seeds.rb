@@ -14,10 +14,10 @@ User.delete_all if (User.count != 0)
 Book.delete_all if (Book.count != 0)
 
 user = User.create!(first_name: "alex", last_name: "falcon", email: "alex@hotmail.com",
- password: "123456789", locale: I18n.available_locales.sample, confirmed_at: Time.zone.now, admin: true)
+ password: "123456789", locale: "es", confirmed_at: Time.zone.now, admin: true)
 User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email,
  password: "123456789", locale: I18n.available_locales.sample, confirmed_at: Time.zone.now)
-5000.times { Book.create!(gender: Faker::Book.genre, author: Faker::Book.author,
+5.times { Book.create!(gender: Faker::Book.genre, author: Faker::Book.author,
  image: Faker::Internet.url, title: Faker::Book.title.truncate(25),
   editor: Faker::Book.publisher, year: Faker::Date.forward(23)) }
 book = Book.last

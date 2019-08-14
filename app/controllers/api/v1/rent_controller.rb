@@ -9,7 +9,11 @@ module Api
       end
 
       def create
-        PlaceOrder.call(rent: rent_params.merge(user_id: current_user.id))
+        result = PlaceOrder.call(rent: rent_params.merge(user_id: current_user.id))
+        raise Errors::Rent::RentCreationFailed.new, result.message unless result.success?
+
+        authorize result.result
+        render json: result.result, status: :created
       end
 
       private
