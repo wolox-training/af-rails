@@ -9,14 +9,7 @@ module Api
       end
 
       def create
-        @rent = Rent.new(rent_params.merge(user_id: current_user.id))
-        authorize @rent
-        if @rent.save
-          render json: @rent, status: :created
-          RentMailer.new_rent(@rent.id).deliver_later
-        else
-          render json: @rent.errors, status: :unprocessable_entity
-        end
+        PlaceOrder.call(rent: rent_params.merge(user_id: current_user.id))
       end
 
       private
