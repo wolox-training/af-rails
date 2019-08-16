@@ -17,7 +17,7 @@ describe RentCreate do
           start_date: (@start_date_rent = Faker::Date.forward(23)),
           end_date: (@end_date_rent = Faker::Date.forward(23))
         }
-        @interactor = PlaceOrder.call(rent: @params)
+        @interactor = RentCreate.call(rent: @params)
       end
 
       it 'the method .call is success' do
