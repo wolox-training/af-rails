@@ -10,16 +10,22 @@ module Api
 
       def create
         result = PlaceOrder.call(rent: rent_params.merge(user_id: current_user.id))
-        raise Errors::Rent::RentCreationFailed.new, result.message unless result.success?
-
-        authorize result.result
-        render json: result.result, status: :created
+        if result.success?
+          authorize result.result
+          render json: result.result, status: :created
+        else
+          book_not_exist(result.message)
+        end
       end
 
       private
 
       def rent_params
         params.permit(:book_id, :start_date, :end_date)
+      end
+
+      def book_not_exist(exception)
+        render json: { errors: exception }, status: :unprocessable_entity
       end
     end
   end

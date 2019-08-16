@@ -9,10 +9,6 @@ class ApiController < ApplicationController
     render json: { errors: exception.message }, status: :not_found
   end
 
-  def book_not_exist(exception)
-    render json: { errors: exception.message }, status: :unprocessable_entity
-  end
-
   private
 
   def set_locale
