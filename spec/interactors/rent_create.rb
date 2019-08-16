@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PlaceOrder do
+describe RentCreate do
   describe '.call' do
     context 'When creating a vaild suggestion book' do
       before do
@@ -23,6 +23,22 @@ describe PlaceOrder do
       it 'the method .call is success' do
         expect(@interactor).to be_a_success
       end
+
+      it 'rent user id is success' do
+        expect(@interactor.rent[:user_id]).to eq(@user.id)
+      end
+
+      it 'rent book id is success' do
+        expect(@interactor.rent[:book_id]).to eq(@book.id)
+      end
+
+      it 'rent start_date is success' do
+        expect(@interactor.rent[:start_date]).to eq(@start_date_rent)
+      end
+
+      it 'rent end_date is success' do
+        expect(@interactor.rent[:end_date]).to eq(@end_date_rent)
+      end
     end
 
     context 'When creating a invaild suggestion book' do
@@ -38,6 +54,10 @@ describe PlaceOrder do
 
       it 'the method .call is failure' do
         expect(@interactor).to be_a_failure
+      end
+
+      it 'the method .call is failure, and present a message' do
+        expect(@interactor.message).to be_present
       end
     end
   end
