@@ -70,15 +70,15 @@
               "application/json": {
                 "id": 1,
                 "synopsis": "http://todosloslibros.com/synopsis",
-                "price": 19.02,
-                "author": "Lucien Waelchi",
-                "title": "A Farewell to Arms",
-                "link": "http://todosloslibros.com/ivan.kuhlman",
-                "editor": "Adis International",
-                "year": "2019-09-11",
+                "price": 26.08,
+                "author": "Dr. Ute Braun",
+                "title": "Edna O'Brien",
+                "link": "http://todosloslibros.com/kathline",
+                "editor": "Carcanet Press",
+                "year": "2019-08-28",
                 "user_id": null,
-                "created_at": "2019-08-22T18:27:58.033Z",
-                "updated_at": "2019-08-22T18:27:58.033Z"
+                "created_at": "2019-08-22T18:45:39.342Z",
+                "updated_at": "2019-08-22T18:45:39.342Z"
               }
             }
           },
@@ -231,12 +231,12 @@
             "examples": {
               "application/json": {
                 "id": 1,
-                "gender": "Mythology",
-                "author": "Leif Johns",
-                "image": "http://purdy.biz/horacio.monahan",
-                "title": "Down to a Sunless Sea",
-                "editor": "FabJob",
-                "year": "2019-08-23"
+                "gender": "Classic",
+                "author": "Larae Spinka",
+                "image": "http://rau.com/maria_langosh",
+                "title": "Consider the Lilies",
+                "editor": "Viking Press",
+                "year": "2019-08-30"
               }
             }
           },
@@ -247,6 +247,88 @@
                 "errors": [
                   "You need to sign in or sign up before continuing."
                 ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/open_library/{isbn}": {
+      "get": {
+        "summary": "Find a book",
+        "tags": [
+          "OpenLibrary"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "This is isbn book"
+          },
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Book found",
+            "examples": {
+              "application/json": {
+                "isbn": "0385472579",
+                "title": "Zen speaks",
+                "subtitle": "shouts of nothingness",
+                "number_of_pages": 159,
+                "authors": [
+                  {
+                    "url": "https://openlibrary.org/authors/OL223368A/Zhizhong_Cai",
+                    "name": "Zhizhong Cai"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Book not found",
+            "examples": {
+              "application/json": {
+                "errors": "El libro con ISBN: 03854725797 no existe"
               }
             }
           }
@@ -404,10 +486,10 @@
             "description": "Rent create",
             "examples": {
               "application/json": {
-                "user_id": 7,
+                "user_id": 9,
                 "book_id": 2,
-                "start_date": "2019-09-03",
-                "end_date": "2019-08-27"
+                "start_date": "2019-08-29",
+                "end_date": "2019-08-29"
               }
             }
           },
@@ -415,7 +497,7 @@
             "description": "Rent unprocessable, book id dont exist",
             "examples": {
               "application/json": {
-                "errors": "Creation rent by book id:  failed"
+                "errors": "Falla en la creación del alquiler de libro de id: "
               }
             }
           },

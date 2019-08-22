@@ -2,10 +2,10 @@ require 'swagger_helper'
 
 describe 'Open Library Controllers', type: :request, swagger_doc: 'api/swagger_doc.json' do
   TAGS_OPEN_LIBRARY = OpenLibrary
-  path '/api/v1/open_library/{id}' do
+  path '/api/v1/open_library/{isbn}' do
     get 'Find a book' do
       tags TAGS_OPEN_LIBRARY
-      parameter name: 'id', in: :path, required: true, type: :string,
+      parameter name: 'isbn', in: :path, required: true, type: :string,
                 description: 'This is isbn book'
       parameter name: 'HTTP_ACCESS_TOKEN', in: :header, required: true, type: :string,
                 description: 'This field is requerid for any request'
@@ -20,7 +20,7 @@ describe 'Open Library Controllers', type: :request, swagger_doc: 'api/swagger_d
       produces 'application/json'
 
       response '200', 'Book found' do
-        let('id') { '0385472579' }
+        let('isbn') { '0385472579' }
         let(:token) { create(:user).create_new_auth_token }
         let('HTTP_ACCESS_TOKEN') { token['access-token'] }
         let('HTTP_TOKEN_TYPE') { token['token-type'] }
@@ -38,7 +38,7 @@ describe 'Open Library Controllers', type: :request, swagger_doc: 'api/swagger_d
         let('HTTP_CLIENT') { token['client'] }
         let('HTTP_EXPIRY') { token['expiry'] }
         let('HTTP_UID') { token['uid'] }
-        let('id') { '03854725797' }
+        let('isbn') { '03854725797' }
         include_context 'with mocked open library'
         include_context 'with integration test'
       end
