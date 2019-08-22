@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-describe 'Books Suggestion controllers', type: :request, swagger_doc: 'api/swagger_doc.json' do
+describe 'Books Suggestion Controllers', type: :request, swagger_doc: 'api/swagger_doc.json' do
   TAGS_BOOK_SUGGESTION = BookSuggestion
   path '/api/v1/book_suggestion' do
     post 'Create book suggestion' do

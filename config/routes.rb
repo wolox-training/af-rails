@@ -15,6 +15,6 @@ Rails.application.routes.draw do
     resources :book_suggestion, only: [:create]
     resources :open_library, only: [:show]
   end
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

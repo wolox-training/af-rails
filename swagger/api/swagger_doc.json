@@ -5,6 +5,98 @@
     "version": "v1"
   },
   "paths": {
+    "/api/v1/book_suggestion": {
+      "post": {
+        "summary": "Create book suggestion",
+        "tags": [
+          "BookSuggestion"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "string"
+                },
+                "synopsis": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "string"
+                },
+                "editor": {
+                  "type": "string"
+                },
+                "year": {
+                  "type": "string"
+                },
+                "description": "This is component of book suggestion"
+              },
+              "requerid": [
+                "user_id",
+                "synopsis",
+                "price",
+                "author",
+                "title",
+                "link",
+                "editor",
+                "year"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Book Suggestion created",
+            "examples": {
+              "application/json": {
+                "id": 1,
+                "synopsis": "http://todosloslibros.com/synopsis",
+                "price": 19.02,
+                "author": "Lucien Waelchi",
+                "title": "A Farewell to Arms",
+                "link": "http://todosloslibros.com/ivan.kuhlman",
+                "editor": "Adis International",
+                "year": "2019-09-11",
+                "user_id": null,
+                "created_at": "2019-08-22T18:27:58.033Z",
+                "updated_at": "2019-08-22T18:27:58.033Z"
+              }
+            }
+          },
+          "422": {
+            "description": "Book Suggestion dont create, argument nil",
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "author": [
+                    "can't be blank"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/book": {
       "get": {
         "summary": "Retrieves all book.",
@@ -53,7 +145,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Rents found",
+            "description": "Books found",
             "examples": {
               "application/json": {
                 "page": [
@@ -66,11 +158,21 @@
                 "next_page": null
               }
             }
+          },
+          "401": {
+            "description": "Books not found, user dont logged in",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
           }
         }
       }
     },
-    "/api/v1/book/": {
+    "/api/v1/book/{id}": {
       "get": {
         "summary": "Retrieves a book.",
         "tags": [
@@ -125,25 +227,26 @@
         ],
         "responses": {
           "200": {
-            "description": "Rents found",
+            "description": "Book found",
             "examples": {
               "application/json": {
-                "page": [
-                  {
-                    "id": 1,
-                    "gender": "Comic/Graphic Novel",
-                    "author": "Juan Carlos Araña Delarosa",
-                    "image": "http://turner.biz/elwood.halvorson",
-                    "title": "A Darkling Plain",
-                    "editor": "No Starch Press",
-                    "year": "2019-09-01"
-                  }
-                ],
-                "count": 1,
-                "total_pages": 1,
-                "total_count": 1,
-                "current_page": 1,
-                "next_page": null
+                "id": 1,
+                "gender": "Mythology",
+                "author": "Leif Johns",
+                "image": "http://purdy.biz/horacio.monahan",
+                "title": "Down to a Sunless Sea",
+                "editor": "FabJob",
+                "year": "2019-08-23"
+              }
+            }
+          },
+          "401": {
+            "description": "Books not found, user dont logged in",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
               }
             }
           }
@@ -209,6 +312,16 @@
                 "total_count": 0,
                 "current_page": 1,
                 "next_page": null
+              }
+            }
+          },
+          "401": {
+            "description": "User dont logged in",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
               }
             }
           }
@@ -291,10 +404,28 @@
             "description": "Rent create",
             "examples": {
               "application/json": {
-                "user_id": 4,
+                "user_id": 7,
                 "book_id": 2,
-                "start_date": "2019-08-27",
-                "end_date": "2019-09-08"
+                "start_date": "2019-09-03",
+                "end_date": "2019-08-27"
+              }
+            }
+          },
+          "422": {
+            "description": "Rent unprocessable, book id dont exist",
+            "examples": {
+              "application/json": {
+                "errors": "Creation rent by book id:  failed"
+              }
+            }
+          },
+          "401": {
+            "description": "Rent dont create, user dont logged in",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
               }
             }
           }
