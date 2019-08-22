@@ -1,9 +1,305 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "API documentation for usual users",
+    "title": "API V1",
     "version": "v1"
   },
   "paths": {
+    "/api/v1/book": {
+      "get": {
+        "summary": "Retrieves all book.",
+        "tags": [
+          "Book"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Rents found",
+            "examples": {
+              "application/json": {
+                "page": [
+
+                ],
+                "count": 0,
+                "total_pages": 0,
+                "total_count": 0,
+                "current_page": 1,
+                "next_page": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/book/": {
+      "get": {
+        "summary": "Retrieves a book.",
+        "tags": [
+          "Book"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "This is the id of book"
+          },
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Rents found",
+            "examples": {
+              "application/json": {
+                "page": [
+                  {
+                    "id": 1,
+                    "gender": "Comic/Graphic Novel",
+                    "author": "Juan Carlos Araña Delarosa",
+                    "image": "http://turner.biz/elwood.halvorson",
+                    "title": "A Darkling Plain",
+                    "editor": "No Starch Press",
+                    "year": "2019-09-01"
+                  }
+                ],
+                "count": 1,
+                "total_pages": 1,
+                "total_count": 1,
+                "current_page": 1,
+                "next_page": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rent": {
+      "get": {
+        "summary": "Retrieves all rent. By User",
+        "tags": [
+          "Rent"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Rents found",
+            "examples": {
+              "application/json": {
+                "page": [
+
+                ],
+                "count": 0,
+                "total_pages": 0,
+                "total_count": 0,
+                "current_page": 1,
+                "next_page": null
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creation rent by user",
+        "tags": [
+          "Rent"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "book_id": {
+                  "type": "string"
+                },
+                "start_date": {
+                  "type": "string"
+                },
+                "end_date": {
+                  "type": "string"
+                },
+                "description": "This is component of rent"
+              },
+              "requerid": [
+                "book_id",
+                "start_date",
+                "end_date"
+              ]
+            }
+          },
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Rent create",
+            "examples": {
+              "application/json": {
+                "user_id": 4,
+                "book_id": 2,
+                "start_date": "2019-08-27",
+                "end_date": "2019-09-08"
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

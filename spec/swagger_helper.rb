@@ -16,7 +16,7 @@ RSpec.configure do |config|
     'api/swagger_doc.json' => {
       swagger: '2.0',
       info: {
-        title: 'API documentation for usual users',
+        title: 'API V1',
         version: 'v1'
       },
       paths: {}

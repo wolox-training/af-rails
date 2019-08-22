@@ -33,7 +33,6 @@ describe RentCreate do
       let(:new_rent) { attributes_for(:rent).merge(book_id: nil, user_id: create(:user).id) }
       let(:interactor) { PlaceOrder.call(rent: new_rent) }
 
-
       it 'the method .call is failure' do
         expect(interactor).to be_a_failure
       end
