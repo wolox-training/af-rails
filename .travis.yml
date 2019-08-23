@@ -16,8 +16,10 @@ before_script:
   - bundle exec rake db:migrate
 
 before_install:
-  - docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=wbooks-api' -p 1433:1433 -d --name sqlserver2 mcr.microsoft.com/mssql/server:2017-latest
+  - docker pull mcr.microsoft.com/mssql/server
+  - docker run -d -e 'SA_PASSWORD=wbooks-api' -p 127.0.0.1:80:1433 mcr.microsoft.com/mssql/server /bin/sh -c "cd /root/mcr.microsoft.com/mssql/server; bundle exec foreman start;"
   - docker ps -a
+  - docker run mcr.microsoft.com/mssql/server /bin/sh -c "cd /root/mcr.microsoft.com/mssql/server; bundle exec rake test"
   - rvm @default,@global do gem uninstall bundler -x
   - gem install bundler -v 2.0.1
   - bundle --version
@@ -27,6 +29,7 @@ before_install:
   - gem update --system
 
 script:
+  - bundle exec rails test
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
 
