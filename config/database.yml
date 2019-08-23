@@ -15,11 +15,15 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: sqlserver
+  # encoding: unicode
+  mode: dblib
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 1433
+  username: sa
+  password: wbooks-api
 
 development:
   <<: *default
@@ -29,10 +33,10 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: wbooks-api
+  # username: sa
 
   # The password associated with the postgres role (username).
-  password: wbooks-api
+  # password: wbooks-api
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -41,7 +45,7 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  # port: 1433
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -78,10 +82,10 @@ test:
   #   production:
   #     url: <%= ENV['DATABASE_URL'] %>
   # the same name as the operating system user that initialized the database.
-  username: wbooks-api
+  # username: sa
 
-  # The password associated with the postgres role (username).
-  password: wbooks-api
+  # # The password associated with the postgres role (username).
+  # password: wbooks-api
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
@@ -89,5 +93,5 @@ test:
 production:
   <<: *default
   database: wbooks-api_production
-  username: wbooks-api
+  username: sa
   password: <%= ENV['WBOOKS-API_DATABASE_PASSWORD'] %>
