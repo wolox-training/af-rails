@@ -17,9 +17,9 @@ before_script:
 
 before_install:
   - docker pull mcr.microsoft.com/mssql/server
-  - docker run -d -e 'SA_PASSWORD=wbooks-api' -p 127.0.0.1:80:1433 mcr.microsoft.com/mssql/server /bin/sh -c "cd /root/mcr.microsoft.com/mssql/server; bundle exec foreman start;"
+  - docker run -d -e 'SA_PASSWORD=wbooks-api' -p 127.0.0.1:80:1433 mcr.microsoft.com/mssql/server /bin/sh
   - docker ps -a
-  - docker run mcr.microsoft.com/mssql/server /bin/sh -c "cd /root/mcr.microsoft.com/mssql/server; bundle exec rake test"
+  - docker run mcr.microsoft.com/mssql/server /bin/sh
   - rvm @default,@global do gem uninstall bundler -x
   - gem install bundler -v 2.0.1
   - bundle --version
