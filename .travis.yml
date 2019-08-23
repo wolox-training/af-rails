@@ -13,13 +13,13 @@ services:
   
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - bundle exec rake db:create db:migrate db:seed
+  - bundle exec rake db:migrate
 
 before_install:
-  - docker pull mcr.microsoft.com/mssql/server
-  - docker run -d -e 'SA_PASSWORD=wbooks-api' -p 127.0.0.1:80:1433 mcr.microsoft.com/mssql/server /bin/sh
+  - docker pull carlad/sinatra
+  - docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec foreman start;"
   - docker ps -a
-  - docker run mcr.microsoft.com/mssql/server /bin/sh
+  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
   - rvm @default,@global do gem uninstall bundler -x
   - gem install bundler -v 2.0.1
   - bundle --version
@@ -29,7 +29,6 @@ before_install:
   - gem update --system
 
 script:
-  - bundle exec rails test
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
 
