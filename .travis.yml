@@ -8,7 +8,7 @@ env:
     - RUBY_GC_HEAP_FREE_SLOTS=200000
 
 services:
-  - postgresql
+  - sqlserver
   - redis-server
   
 before_script:
