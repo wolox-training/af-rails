@@ -8,8 +8,8 @@ env:
     - RUBY_GC_HEAP_FREE_SLOTS=200000
 
 services:
-  - redis-server
   - docker
+  - redis-server
   
 before_script:
   - cp config/database.travis.yml config/database.yml
