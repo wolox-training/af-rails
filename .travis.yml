@@ -12,13 +12,7 @@ services:
   - redis-server
   
 before_script:
-  - sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=wbooks-api' -p 1433:1433 -d --name sqlserver mcr.microsoft.com/mssql/server:2017-latest
-  - sudo docker cp sqlserver.sql sqlserver:sqlserver.sql
-  - sudo docker exec -it mssql-server-linux-latest /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'wbooks-api' -i sqlserver.sql
   - cp config/database.travis.yml config/database.yml
-  - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
-  - psql -c "DROP DATABASE IF EXISTS \"wbooks-api_test\";" -U postgres
-  - psql -c "CREATE DATABASE \"wbooks-api_test\" ENCODING 'utf8';" -U postgres
   - bundle exec rake db:migrate
 
 before_install:
@@ -36,3 +30,36 @@ script:
 
 cache:
   bundler: true
+
+include:
+  - stage: Test
+    php: 7.2
+    env: DB=sqlsrv
+    sudo: required
+    services:
+      - docker
+    before_script:
+      - bash ./travis/install-sqlsrv-dependencies.sh
+      - bash ./travis/install-mssql-sqlsrv.sh
+      - bash ./travis/install-mssql.sh
+  - stage: Test
+    php: 7.3
+    env: DB=sqlsrv COVERAGE=yes
+    sudo: required
+    services:
+      - docker
+    before_script:
+      - bash ./travis/install-sqlsrv-dependencies.sh
+      - bash ./travis/install-mssql-sqlsrv.sh
+      - bash ./travis/install-mssql.sh
+  - stage: Test
+    php: 7.4snapshot
+    env: DB=sqlsrv
+    sudo: required
+    services:
+      - docker
+    before_script:
+      - bash ./travis/install-sqlsrv-dependencies.sh
+      - bash ./travis/install-mssql-sqlsrv.sh
+      - bash ./travis/install-mssql.sh
+
