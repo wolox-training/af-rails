@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20190814143138) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "book_suggestions", force: :cascade do |t|
     t.string "synopsis"
     t.float "price"
@@ -33,7 +30,7 @@ ActiveRecord::Schema.define(version: 20190814143138) do
     t.string "gender", null: false
     t.string "author", null: false
     t.string "image", null: false
-    t.string "title", limit: 25, null: false
+    t.string "title", limit: 25
     t.string "editor", null: false
     t.string "year", null: false
     t.datetime "created_at", null: false
@@ -66,7 +63,7 @@ ActiveRecord::Schema.define(version: 20190814143138) do
     t.string "email"
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.json "tokens"
+    t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sign_in_count", default: 0
