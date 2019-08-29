@@ -29,7 +29,7 @@ describe RentCreate do
       end
     end
 
-    context 'When creating a invaild suggestion book' do
+    context 'When creating a type invaild suggestion book ' do
       let(:new_rent) { attributes_for(:rent).merge(book_id: nil, user_id: create(:user).id) }
       let(:interactor) { PlaceOrder.call(rent: new_rent) }
 

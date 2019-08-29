@@ -18,22 +18,12 @@ describe 'Books controllers', type: :request, swagger_doc: 'api/swagger_doc.json
       produces 'application/json'
 
       response '200', 'Books found' do
-        let(:token) { create(:user).create_new_auth_token }
-        let('HTTP_ACCESS_TOKEN') { token['access-token'] }
-        let('HTTP_TOKEN_TYPE') { token['token-type'] }
-        let('HTTP_CLIENT') { token['client'] }
-        let('HTTP_EXPIRY') { token['expiry'] }
-        let('HTTP_UID') { token['uid'] }
+        include_context 'with success authentication user'
         include_context 'with integration test'
       end
 
       response '401', 'Books not found, user dont logged in' do
-        let(:token) { build(:user).create_new_auth_token }
-        let('HTTP_ACCESS_TOKEN') { 'tokent dont exist' }
-        let('HTTP_TOKEN_TYPE') { token['token-type'] }
-        let('HTTP_CLIENT') { token['client'] }
-        let('HTTP_EXPIRY') { token['expiry'] }
-        let('HTTP_UID') { token['uid'] }
+        include_context 'with failure authentication user'
         include_context 'with integration test'
       end
     end
@@ -58,23 +48,13 @@ describe 'Books controllers', type: :request, swagger_doc: 'api/swagger_doc.json
 
       response '200', 'Book found' do
         let('id') { create(:book).id }
-        let(:token) { create(:user).create_new_auth_token }
-        let('HTTP_ACCESS_TOKEN') { token['access-token'] }
-        let('HTTP_TOKEN_TYPE') { token['token-type'] }
-        let('HTTP_CLIENT') { token['client'] }
-        let('HTTP_EXPIRY') { token['expiry'] }
-        let('HTTP_UID') { token['uid'] }
+        include_context 'with success authentication user'
         include_context 'with integration test'
       end
 
       response '401', 'Books not found, user dont logged in' do
         let('id') { build(:book).id }
-        let(:token) { create(:user).create_new_auth_token }
-        let('HTTP_ACCESS_TOKEN') { 'tokent dont exist' }
-        let('HTTP_TOKEN_TYPE') { token['token-type'] }
-        let('HTTP_CLIENT') { token['client'] }
-        let('HTTP_EXPIRY') { token['expiry'] }
-        let('HTTP_UID') { token['uid'] }
+        include_context 'with failure authentication user'
         include_context 'with integration test'
       end
     end

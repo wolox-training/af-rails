@@ -21,24 +21,14 @@ describe 'Open Library Controllers', type: :request, swagger_doc: 'api/swagger_d
 
       response '200', 'Book found' do
         let('isbn') { '0385472579' }
-        let(:token) { create(:user).create_new_auth_token }
-        let('HTTP_ACCESS_TOKEN') { token['access-token'] }
-        let('HTTP_TOKEN_TYPE') { token['token-type'] }
-        let('HTTP_CLIENT') { token['client'] }
-        let('HTTP_EXPIRY') { token['expiry'] }
-        let('HTTP_UID') { token['uid'] }
+        include_context 'with success authentication user'
         include_context 'with mocked open library'
         include_context 'with integration test'
       end
 
       response '404', 'Book not found' do
-        let(:token) { create(:user).create_new_auth_token }
-        let('HTTP_ACCESS_TOKEN') { token['access-token'] }
-        let('HTTP_TOKEN_TYPE') { token['token-type'] }
-        let('HTTP_CLIENT') { token['client'] }
-        let('HTTP_EXPIRY') { token['expiry'] }
-        let('HTTP_UID') { token['uid'] }
         let('isbn') { '03854725797' }
+        include_context 'with success authentication user'
         include_context 'with mocked open library'
         include_context 'with integration test'
       end
