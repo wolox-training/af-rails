@@ -45,7 +45,6 @@ gem 'rails_admin', '~> 2.0.0.rc'
 gem "interactor", "~> 3.0"
 gem 'rswag-api'
 gem 'rswag-ui'
-gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter', '~> 5.1.2'
 
 # Use Capistrano for deployment
