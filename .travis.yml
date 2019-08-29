@@ -12,6 +12,9 @@ services:
   - redis-server
 
 before_install:
+  - rvm @default,@global do gem uninstall bundler -x
+  - gem install bundler -v 2.0.1
+  - bundle --version
   - sudo apt-get install wget
   - sudo apt-get install build-essential
   - sudo apt-get install libc6-dev
