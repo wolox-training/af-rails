@@ -9,13 +9,12 @@ module Api
       end
 
       def create
-        @rent = Rent.new(rent_params.merge(user_id: current_user.id))
-        authorize @rent
-        if @rent.save
-          render json: @rent, status: :created
-          RentMailer.new_rent(@rent.id).deliver_later
+        result = PlaceOrder.call(rent: rent_params.merge(user_id: current_user.id))
+        if result.success?
+          authorize result.result
+          render json: result.result, status: :created
         else
-          render json: @rent.errors, status: :unprocessable_entity
+          book_not_exist(result.message)
         end
       end
 
@@ -23,6 +22,10 @@ module Api
 
       def rent_params
         params.permit(:book_id, :start_date, :end_date)
+      end
+
+      def book_not_exist(exception)
+        render json: { errors: exception }, status: :unprocessable_entity
       end
     end
   end

@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   rescue_from Errors::OpenLibrary::BookNotFound, with: :book_not_found
+  rescue_from Errors::Rent::RentCreationFailed, with: :book_not_exist
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
   before_action :set_locale

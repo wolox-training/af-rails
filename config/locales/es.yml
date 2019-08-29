@@ -3,6 +3,9 @@ es:
     open_library:
       errors:
         book_not_found: "El libro con ISBN: %{isbn_number} no existe"
+    rent:
+      errors:
+        rent_creation: "Falla en la creación del alquiler de libro de id: %{book_id}"
   subject: "Información de nuevo rent"
   mail_title: "Nuevo alquiler registrado para: "
   message_title: "Gracias por la compra"
