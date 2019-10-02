@@ -32,7 +32,7 @@ before_install:
 script:
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
-  - newman run -e /test/environment_postman.json /test/collection_postman.json
+  - newman run -e test/environment_postman.json test/collection_postman.json
 
 cache:
   bundler: true
