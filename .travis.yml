@@ -12,6 +12,8 @@ services:
   - redis-server
   
 before_script:
+  - npm install newman
+  - npm --version
   - cp config/database.travis.yml config/database.yml
   - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
   - psql -c "DROP DATABASE IF EXISTS \"wbooks-api_test\";" -U postgres
@@ -30,6 +32,7 @@ before_install:
 script:
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
+  - newman run -e /test/environment_postman.json /test/collection_postman.json
 
 cache:
   bundler: true
