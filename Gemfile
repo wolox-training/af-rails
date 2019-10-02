@@ -43,6 +43,8 @@ gem 'sidekiq-scheduler'
 gem 'httparty', '~> 0.16.4'
 gem 'rails_admin', '~> 2.0.0.rc'
 gem "interactor", "~> 3.0"
+gem 'rswag-api'
+gem 'rswag-ui'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -62,6 +64,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'rswag-specs'
 end
 
 group :development do

@@ -10,7 +10,7 @@ env:
 services:
   - postgresql
   - redis-server
-
+  
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres

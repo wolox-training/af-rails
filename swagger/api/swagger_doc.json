@@ -1,0 +1,518 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/book_suggestion": {
+      "post": {
+        "summary": "Create book suggestion",
+        "tags": [
+          "BookSuggestion"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "string"
+                },
+                "synopsis": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "string"
+                },
+                "editor": {
+                  "type": "string"
+                },
+                "year": {
+                  "type": "string"
+                },
+                "description": "This is component of book suggestion"
+              },
+              "requerid": [
+                "user_id",
+                "synopsis",
+                "price",
+                "author",
+                "title",
+                "link",
+                "editor",
+                "year"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Book Suggestion created",
+            "examples": {
+              "application/json": {
+                "id": 1,
+                "synopsis": "http://todosloslibros.com/synopsis",
+                "price": 26.08,
+                "author": "Dr. Ute Braun",
+                "title": "Edna O'Brien",
+                "link": "http://todosloslibros.com/kathline",
+                "editor": "Carcanet Press",
+                "year": "2019-08-28",
+                "user_id": null,
+                "created_at": "2019-08-22T18:45:39.342Z",
+                "updated_at": "2019-08-22T18:45:39.342Z"
+              }
+            }
+          },
+          "422": {
+            "description": "Book Suggestion dont create, argument nil",
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "author": [
+                    "can't be blank"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/book": {
+      "get": {
+        "summary": "Retrieves all book.",
+        "tags": [
+          "Book"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Books found",
+            "examples": {
+              "application/json": {
+                "page": [
+
+                ],
+                "count": 0,
+                "total_pages": 0,
+                "total_count": 0,
+                "current_page": 1,
+                "next_page": null
+              }
+            }
+          },
+          "401": {
+            "description": "Books not found, user dont logged in",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/book/{id}": {
+      "get": {
+        "summary": "Retrieves a book.",
+        "tags": [
+          "Book"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "This is the id of book"
+          },
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Book found",
+            "examples": {
+              "application/json": {
+                "id": 1,
+                "gender": "Classic",
+                "author": "Larae Spinka",
+                "image": "http://rau.com/maria_langosh",
+                "title": "Consider the Lilies",
+                "editor": "Viking Press",
+                "year": "2019-08-30"
+              }
+            }
+          },
+          "401": {
+            "description": "Books not found, user dont logged in",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/open_library/{isbn}": {
+      "get": {
+        "summary": "Find a book",
+        "tags": [
+          "OpenLibrary"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "This is isbn book"
+          },
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Book found",
+            "examples": {
+              "application/json": {
+                "isbn": "0385472579",
+                "title": "Zen speaks",
+                "subtitle": "shouts of nothingness",
+                "number_of_pages": 159,
+                "authors": [
+                  {
+                    "url": "https://openlibrary.org/authors/OL223368A/Zhizhong_Cai",
+                    "name": "Zhizhong Cai"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Book not found",
+            "examples": {
+              "application/json": {
+                "errors": "El libro con ISBN: 03854725797 no existe"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rent": {
+      "get": {
+        "summary": "Retrieves all rent. By User",
+        "tags": [
+          "Rent"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Rents found",
+            "examples": {
+              "application/json": {
+                "page": [
+
+                ],
+                "count": 0,
+                "total_pages": 0,
+                "total_count": 0,
+                "current_page": 1,
+                "next_page": null
+              }
+            }
+          },
+          "401": {
+            "description": "User dont logged in",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creation rent by user",
+        "tags": [
+          "Rent"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "book_id": {
+                  "type": "string"
+                },
+                "start_date": {
+                  "type": "string"
+                },
+                "end_date": {
+                  "type": "string"
+                },
+                "description": "This is component of rent"
+              },
+              "requerid": [
+                "book_id",
+                "start_date",
+                "end_date"
+              ]
+            }
+          },
+          {
+            "name": "HTTP_ACCESS_TOKEN",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_TOKEN_TYPE",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_CLIENT",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_EXPIRY",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          },
+          {
+            "name": "HTTP_UID",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "This field is requerid for any request"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Rent create",
+            "examples": {
+              "application/json": {
+                "user_id": 9,
+                "book_id": 2,
+                "start_date": "2019-08-29",
+                "end_date": "2019-08-29"
+              }
+            }
+          },
+          "422": {
+            "description": "Rent unprocessable, book id dont exist",
+            "examples": {
+              "application/json": {
+                "errors": "Falla en la creación del alquiler de libro de id: "
+              }
+            }
+          },
+          "401": {
+            "description": "Rent dont create, user dont logged in",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
