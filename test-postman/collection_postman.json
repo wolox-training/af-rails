@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "738b640c-6570-44db-899f-fe3980028211",
+		"name": "Automatization Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c2abb52-497f-4495-b67d-aae08bee894b",
+						"exec": [
+							"var jsonData=pm.response.json();",
+							"postman.setGlobalVariable(\"ACCESS_TOKEN\",postman.getResponseHeader(\"access-token\"));",
+							"postman.setGlobalVariable(\"CLIENT\",postman.getResponseHeader(\"client\"));",
+							"postman.setGlobalVariable(\"UID\",postman.getResponseHeader(\"uid\"));",
+							"postman.setGlobalVariable(\"EXPIRE\",postman.getResponseHeader(\"expiry\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "alex@hotmail.com",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "first_name",
+						"value": "Alex",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "last_name",
+						"value": "Falcon",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "123456789",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "alex@hotmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/auth/sign_in",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"auth",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Index Book",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ae407bfe-89d2-485a-9ca6-50a0c19df519",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "35cd3f66-1161-4d2f-8ef9-a1a7fb40bb13",
+						"exec": [
+							"pm.test(\"Payload must be valid and have a body\", function () { ",
+							"     pm.response.to.be.ok; // equivalente a decir que valide que sea 200",
+							"     pm.response.to.be.withBody; // body tiene que exitir",
+							"     pm.response.to.be.json; // además que sea un JSON válido",
+							"    });",
+							"// Pedimos a nuestro response payload que tengo Content-Type en el header",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    });",
+							"// Y comprobamos que la petición se haya servido en un determinado tiempo",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "alex@hotmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "client",
+						"value": "{{CLIENT}}",
+						"type": "text"
+					},
+					{
+						"key": "expire",
+						"value": "{{EXPIRE}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "uid",
+						"value": "{{UID}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/book",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Book",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c371968a-a94d-411b-b4ba-457577fe6ae3",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "client",
+						"value": "{{CLIENT}}",
+						"type": "text"
+					},
+					{
+						"key": "expire",
+						"value": "{{EXPIRE}}",
+						"type": "text"
+					},
+					{
+						"key": "uid",
+						"value": "{{UID}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/api/v1/book/1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"book",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

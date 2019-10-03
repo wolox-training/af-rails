@@ -33,7 +33,7 @@ script:
   - gem install bundler
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
-  - node_modules/.bin/newman run -e test/environment_postman.json test/collection_postman.json
+  - node_modules/.bin/newman run -e test-postman/environment_postman.json test-postman/collection_postman.json
   - ls
 
 cache:
