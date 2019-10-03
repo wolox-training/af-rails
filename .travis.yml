@@ -11,9 +11,6 @@ services:
   - postgresql
   - redis-server
   
-install:
-  - npm install newman
-
 before_script:
   - node --version
   - npm --version
@@ -34,6 +31,9 @@ before_install:
   - gem update --system
 
 script:
+  - npm install newman
+  - npm --version
+  - gem install bundler
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
   - node_modules/.bin/newman run test-postman/collection_postman.json
