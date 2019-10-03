@@ -15,3 +15,5 @@ Book.delete_all if (Book.count != 0)
 
 User.create!(first_name: "alex", last_name: "falcon", email: "alex@hotmail.com",
  password: "123456789", locale: I18n.available_locales.sample, confirmed_at: Time.zone.now, admin: true)
+
+User.last
