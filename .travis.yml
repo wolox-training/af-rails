@@ -14,7 +14,6 @@ services:
 before_script:
   - node --version
   - npm --version
-  - node_modules/.bin/newman --version
   - cp config/database.travis.yml config/database.yml
   - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
   - psql -c "DROP DATABASE IF EXISTS \"wbooks-api_test\";" -U postgres
