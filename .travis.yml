@@ -19,7 +19,6 @@ before_script:
   - psql -c "DROP DATABASE IF EXISTS \"wbooks-api_test\";" -U postgres
   - psql -c "CREATE DATABASE \"wbooks-api_test\" ENCODING 'utf8';" -U postgres
   - bundle exec rake db:migrate
-  - rails s
 
 before_install:
   - rvm @default,@global do gem uninstall bundler -x
