@@ -35,7 +35,7 @@ script:
   - gem install bundler
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
-  - node_modules/.bin/newman run -e test-postman/environment_postman.json test-postman/collection_postman.json
+  - newman run -e test-postman/environment_postman.json test-postman/collection_postman.json
 
 cache:
   bundler: true
