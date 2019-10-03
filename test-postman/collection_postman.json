@@ -14,10 +14,10 @@
 						"id": "6c2abb52-497f-4495-b67d-aae08bee894b",
 						"exec": [
 							"var jsonData=pm.response.json();",
-							"postman.setGlobalVariable(\"ACCESS_TOKEN\",postman.getResponseHeader(\"access-token\"));",
-							"postman.setGlobalVariable(\"CLIENT\",postman.getResponseHeader(\"client\"));",
-							"postman.setGlobalVariable(\"UID\",postman.getResponseHeader(\"uid\"));",
-							"postman.setGlobalVariable(\"EXPIRE\",postman.getResponseHeader(\"expiry\"));"
+							"postman.setGlobalVariable(\"ACCESS_TOKEN1\",postman.getResponseHeader(\"access-token\"));",
+							"postman.setGlobalVariable(\"CLIENT2\",postman.getResponseHeader(\"client\"));",
+							"postman.setGlobalVariable(\"UID3\",postman.getResponseHeader(\"uid\"));",
+							"postman.setGlobalVariable(\"EXPIRE4\",postman.getResponseHeader(\"expiry\"));"
 						],
 						"type": "text/javascript"
 					}
@@ -28,33 +28,33 @@
 				"header": [
 					{
 						"key": "email",
-						"value": "alex@hotmail.com",
 						"type": "text",
+						"value": "alex@hotmail.com",
 						"disabled": true
 					},
 					{
 						"key": "first_name",
-						"value": "Alex",
 						"type": "text",
+						"value": "Alex",
 						"disabled": true
 					},
 					{
 						"key": "last_name",
-						"value": "Falcon",
 						"type": "text",
+						"value": "Falcon",
 						"disabled": true
 					},
 					{
 						"key": "password",
-						"value": "123456789",
 						"type": "text",
+						"value": "123456789",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
 					}
 				],
 				"body": {
@@ -144,17 +144,17 @@
 				"header": [
 					{
 						"key": "access-token",
-						"value": "{{ACCESS_TOKEN}}",
+						"value": "{{ACCESS_TOKEN1}}",
 						"type": "text"
 					},
 					{
 						"key": "client",
-						"value": "{{CLIENT}}",
+						"value": "{{CLIENT2}}",
 						"type": "text"
 					},
 					{
 						"key": "expire",
-						"value": "{{EXPIRE}}",
+						"value": "{{EXPIRE4}}",
 						"type": "text"
 					},
 					{
@@ -165,7 +165,7 @@
 					},
 					{
 						"key": "uid",
-						"value": "{{UID}}",
+						"value": "{{UID3}}",
 						"type": "text"
 					}
 				],
