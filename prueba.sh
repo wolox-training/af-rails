@@ -1,4 +1,0 @@
-rails c
-{
-User.all
-}
