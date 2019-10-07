@@ -1,0 +1,4 @@
+rails c
+{
+User.all
+}
