@@ -18,8 +18,9 @@ before_script:
   - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
   - psql -c "DROP DATABASE IF EXISTS \"wbooks-api_test\";" -U postgres
   - psql -c "CREATE DATABASE \"wbooks-api_test\" ENCODING 'utf8';" -U postgres
-  - bundle exec rake db:migrate
-  - bundle exec rake db:seed
+  - bundle exec rake db:migrate db:seed
+  - bundle exec rails c
+  - User.all
   - bundle exec rails server -p 3000 -d
 
 before_install:
@@ -38,8 +39,6 @@ script:
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
   - node_modules/.bin/newman run -e test-postman/environment_postman.json test-postman/collection_postman.json
-  - rails c
-  - User.all
 
 cache:
   bundler: true
