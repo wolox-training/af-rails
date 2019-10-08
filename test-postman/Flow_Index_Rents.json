@@ -6,6 +6,66 @@
 	},
 	"item": [
 		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "first_name",
+							"value": "Test3",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Test3",
+							"type": "text"
+						},
+						{
+							"key": "locale",
+							"value": "es",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test3@hotmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "123456789",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/auth/",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"auth",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Sign in",
 			"event": [
 				{
@@ -61,7 +121,7 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "alex@hotmail.com",
+							"value": "test3@hotmail.com",
 							"type": "text"
 						},
 						{
@@ -79,6 +139,87 @@
 					"path": [
 						"auth",
 						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "client",
+						"value": "{{CLIENT}}",
+						"type": "text"
+					},
+					{
+						"key": "expire",
+						"value": "{{EXPIRE}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "uid",
+						"value": "{{UID}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "gender",
+							"value": "Genero3",
+							"description": "|",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Autor3",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "Imagen3",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Titulo3",
+							"type": "text"
+						},
+						{
+							"key": "editor",
+							"value": "Editorial3",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "10-10-2019",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/book",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"book"
 					]
 				}
 			},
@@ -142,7 +283,7 @@
 					"formdata": [
 						{
 							"key": "book_id",
-							"value": "6",
+							"value": "3",
 							"type": "text"
 						},
 						{
@@ -172,88 +313,31 @@
 			"response": []
 		},
 		{
-			"name": "Create Book",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "access-token",
-						"value": "{{ACCESS_TOKEN}}",
-						"type": "text"
-					},
-					{
-						"key": "client",
-						"value": "{{CLIENT}}",
-						"type": "text"
-					},
-					{
-						"key": "expire",
-						"value": "{{EXPIRE}}",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					},
-					{
-						"key": "uid",
-						"value": "{{UID}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "gender",
-							"value": "Genero",
-							"description": "|",
-							"type": "text"
-						},
-						{
-							"key": "author",
-							"value": "Autor",
-							"type": "text"
-						},
-						{
-							"key": "image",
-							"value": "Imagen",
-							"type": "text"
-						},
-						{
-							"key": "title",
-							"value": "Titulo",
-							"type": "text"
-						},
-						{
-							"key": "editor",
-							"value": "Editorial",
-							"type": "text"
-						},
-						{
-							"key": "year",
-							"value": "10-10-2019",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{HOST}}/api/v1/book",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"book"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Index Rent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b5e183b-3856-4067-bffa-f288ff9c7cc9",
+						"exec": [
+							"pm.test(\"Payload must be valid and have a body\", function () { ",
+							"     pm.response.to.be.ok; // equivalente a decir que valide que sea 200",
+							"     pm.response.to.be.withBody; // body tiene que exitir",
+							"     pm.response.to.be.json; // además que sea un JSON válido",
+							"    });",
+							"// Pedimos a nuestro response payload que tengo Content-Type en el header",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    });",
+							"// Y comprobamos que la petición se haya servido en un determinado tiempo",
+							"pm.test(\"Response time is less than 400ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [

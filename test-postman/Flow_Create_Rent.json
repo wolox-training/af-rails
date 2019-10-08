@@ -6,87 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Create Book",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "access-token",
-						"value": "{{ACCESS_TOKEN}}",
-						"type": "text"
-					},
-					{
-						"key": "client",
-						"value": "{{CLIENT}}",
-						"type": "text"
-					},
-					{
-						"key": "expire",
-						"value": "{{EXPIRE}}",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					},
-					{
-						"key": "uid",
-						"value": "{{UID}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "gender",
-							"value": "Genero",
-							"description": "|",
-							"type": "text"
-						},
-						{
-							"key": "author",
-							"value": "Autor",
-							"type": "text"
-						},
-						{
-							"key": "image",
-							"value": "Imagen",
-							"type": "text"
-						},
-						{
-							"key": "title",
-							"value": "Titulo",
-							"type": "text"
-						},
-						{
-							"key": "editor",
-							"value": "Editorial",
-							"type": "text"
-						},
-						{
-							"key": "year",
-							"value": "10-10-2019",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{HOST}}/api/v1/book",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"book"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Create User",
 			"request": {
 				"method": "POST",
@@ -103,12 +22,12 @@
 					"urlencoded": [
 						{
 							"key": "first_name",
-							"value": "alex",
+							"value": "Test1",
 							"type": "text"
 						},
 						{
 							"key": "last_name",
-							"value": "Falcon",
+							"value": "Test1",
 							"type": "text"
 						},
 						{
@@ -118,7 +37,7 @@
 						},
 						{
 							"key": "email",
-							"value": "alex@hotmail.com",
+							"value": "test1@hotmail.com",
 							"type": "text"
 						},
 						{
@@ -202,7 +121,7 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "alex@hotmail.com",
+							"value": "test1@hotmail.com",
 							"type": "text"
 						},
 						{
@@ -220,6 +139,87 @@
 					"path": [
 						"auth",
 						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "client",
+						"value": "{{CLIENT}}",
+						"type": "text"
+					},
+					{
+						"key": "expire",
+						"value": "{{EXPIRE}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "uid",
+						"value": "{{UID}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "gender",
+							"value": "Genero1",
+							"description": "|",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Autor1",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "Imagen1",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Titulo1",
+							"type": "text"
+						},
+						{
+							"key": "editor",
+							"value": "Editorial1",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "10-10-2019",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/book",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"book"
 					]
 				}
 			},
