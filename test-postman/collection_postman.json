@@ -6,18 +6,63 @@
 	},
 	"item": [
 		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "alex@hotmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "123456789",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/auth/",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"auth",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Sign in",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "6c2abb52-497f-4495-b67d-aae08bee894b",
+						"id": "db497c5f-e728-4758-ae42-1f91e7e24446",
 						"exec": [
 							"var jsonData=pm.response.json();",
-							"postman.setGlobalVariable(\"ACCESS_TOKEN1\",postman.getResponseHeader(\"access-token\"));",
-							"postman.setGlobalVariable(\"CLIENT2\",postman.getResponseHeader(\"client\"));",
-							"postman.setGlobalVariable(\"UID3\",postman.getResponseHeader(\"uid\"));",
-							"postman.setGlobalVariable(\"EXPIRE4\",postman.getResponseHeader(\"expiry\"));"
+							"postman.setGlobalVariable(\"ACCESS_TOKEN\",postman.getResponseHeader(\"access-token\"));",
+							"postman.setGlobalVariable(\"CLIENT\",postman.getResponseHeader(\"client\"));",
+							"postman.setGlobalVariable(\"UID\",postman.getResponseHeader(\"uid\"));",
+							"postman.setGlobalVariable(\"EXPIRE\",postman.getResponseHeader(\"expiry\"));"
 						],
 						"type": "text/javascript"
 					}
@@ -144,17 +189,17 @@
 				"header": [
 					{
 						"key": "access-token",
-						"value": "{{ACCESS_TOKEN1}}",
+						"value": "{{ACCESS_TOKEN}}",
 						"type": "text"
 					},
 					{
 						"key": "client",
-						"value": "{{CLIENT2}}",
+						"value": "{{CLIENT}}",
 						"type": "text"
 					},
 					{
 						"key": "expire",
-						"value": "{{EXPIRE4}}",
+						"value": "{{EXPIRE}}",
 						"type": "text"
 					},
 					{
@@ -165,7 +210,7 @@
 					},
 					{
 						"key": "uid",
-						"value": "{{UID3}}",
+						"value": "{{UID}}",
 						"type": "text"
 					}
 				],
@@ -201,6 +246,9 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "basic"
@@ -233,6 +281,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
 				"url": {
 					"raw": "{{HOST}}/api/v1/book/1",
 					"host": [
