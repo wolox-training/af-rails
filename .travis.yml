@@ -36,10 +36,10 @@ script:
   - gem install bundler
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
-  - node_modules/.bin/newman run -e test-postman/environment_postman.json Flow_Create_Rent.json
-  - node_modules/.bin/newman run -e test-postman/environment_postman.json Flow_Index_Books.json
-  - node_modules/.bin/newman run -e test-postman/environment_postman.json Flow_Index_Rents.json
-  - node_modules/.bin/newman run -e test-postman/environment_postman.json Flow_Show_Book.json
+  - node_modules/.bin/newman run -e test-postman/environment_postman.json test-postman/Flow_Create_Rent.json
+  - node_modules/.bin/newman run -e test-postman/environment_postman.json test-postman/Flow_Index_Books.json
+  - node_modules/.bin/newman run -e test-postman/environment_postman.json test-postman/Flow_Index_Rents.json
+  - node_modules/.bin/newman run -e test-postman/environment_postman.json test-postman/Flow_Show_Book.json
 
 cache:
   bundler: true
