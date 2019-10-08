@@ -21,8 +21,23 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
+							"key": "first_name",
+							"value": "alex",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Falcon",
+							"type": "text"
+						},
+						{
+							"key": "locale",
+							"value": "es",
+							"type": "text"
+						},
+						{
 							"key": "email",
-							"value": "alex@hotmail.com",
+							"value": "alex1@hotmail.com",
 							"type": "text"
 						},
 						{
