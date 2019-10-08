@@ -146,6 +146,20 @@
 		},
 		{
 			"name": "Create Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fd9fa4fb-739e-41e3-8468-c217d588ad00",
+						"exec": [
+							"pm.test(\"Content of response\", function () {",
+							"    pm.response.to.have.body(\"a\");",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
