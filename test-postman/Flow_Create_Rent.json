@@ -245,6 +245,9 @@
 							"// Y comprobamos que la petición se haya servido en un determinado tiempo",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(300);",
+							"    });",
+							"pm.test(\"Content of response\", function () {",
+							"    pm.response.to.have.body(\"a\");",
 							"    });"
 						],
 						"type": "text/javascript"
