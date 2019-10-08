@@ -1,6 +1,7 @@
 class ApiController < ApplicationController
   rescue_from Errors::OpenLibrary::BookNotFound, with: :book_not_found
   rescue_from Errors::Rent::RentCreationFailed, with: :book_not_exist
+  rescue_from Errors::Book::BookCreationFailed, with: :book_not_created
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
 

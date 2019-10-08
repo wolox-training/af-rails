@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "2979a445-2efa-40f7-81da-38b98abc79b0",
+		"name": "Flow_Index_Rent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c2abb52-497f-4495-b67d-aae08bee894b",
+						"exec": [
+							"postman.setGlobalVariable(\"ACCESS_TOKEN\",postman.getResponseHeader(\"access-token\"));",
+							"postman.setGlobalVariable(\"CLIENT\",postman.getResponseHeader(\"client\"));",
+							"postman.setGlobalVariable(\"UID\",postman.getResponseHeader(\"uid\"));",
+							"postman.setGlobalVariable(\"EXPIRE\",postman.getResponseHeader(\"expiry\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "alex@hotmail.com",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "first_name",
+						"value": "Alex",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "last_name",
+						"value": "Falcon",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "123456789",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "alex@hotmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/auth/sign_in",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"auth",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Rent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60ec4153-09eb-4db9-bb29-d001aa291ceb",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "47f290a1-6d07-43a1-8bb7-1c752e3fab30",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "client",
+						"value": "{{CLIENT}}",
+						"type": "text"
+					},
+					{
+						"key": "expire",
+						"value": "{{EXPIRE}}",
+						"type": "text"
+					},
+					{
+						"key": "uid",
+						"value": "{{UID}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "book_id",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "start_date",
+							"value": "2019-07-25",
+							"type": "text"
+						},
+						{
+							"key": "end_date",
+							"value": "2019-07-25",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/rent",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "client",
+						"value": "{{CLIENT}}",
+						"type": "text"
+					},
+					{
+						"key": "expire",
+						"value": "{{EXPIRE}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "uid",
+						"value": "{{UID}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "gender",
+							"value": "Genero",
+							"description": "|",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Autor",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "Imagen",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Titulo",
+							"type": "text"
+						},
+						{
+							"key": "editor",
+							"value": "Editorial",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "10-10-2019",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/book",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Index Rent",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "client",
+						"value": "{{CLIENT}}",
+						"type": "text"
+					},
+					{
+						"key": "expire",
+						"value": "{{EXPIRE}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "uid",
+						"value": "{{UID}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/api/v1/rent",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rent"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
