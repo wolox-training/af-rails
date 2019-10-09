@@ -341,7 +341,21 @@
 							"    pm.expect(jsonData.book_id).to.equal(pm.globals.get(\"ID_BOOK\"));",
 							"    pm.expect(jsonData.start_date).to.equal(request.data.start_date);",
 							"    pm.expect(jsonData.end_date).to.equal(request.data.end_date);",
-							"});"
+							"});",
+							"",
+							"",
+							"//Liberacion de variables",
+							"pm.environment.unset(\"EMAIL_USER\");",
+							"pm.environment.unset(\"PASSWORD_USER\");",
+							"pm.environment.unset(\"FIRST_NAME_USER\");",
+							"pm.environment.unset(\"LAST_NAME_USER\");",
+							"pm.environment.unset(\"LOCALE_USER\");",
+							"pm.environment.unset(\"ACCESS_TOKEN\");",
+							"pm.environment.unset(\"CLIENT\");",
+							"pm.environment.unset(\"UID\");",
+							"pm.environment.unset(\"EXPIRE\");",
+							"pm.environment.unset(\"ID_USER\");",
+							"pm.environment.unset(\"ID_BOOK\");"
 						],
 						"type": "text/javascript"
 					}

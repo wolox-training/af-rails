@@ -357,7 +357,21 @@
 							"// Y comprobamos que la petición se haya servido en un determinado tiempo",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(300);",
-							"    });"
+							"    });",
+							"    ",
+							"//Liberacion de variables",
+							"pm.environment.unset(\"EMAIL_USER\");",
+							"pm.environment.unset(\"PASSWORD_USER\");",
+							"pm.environment.unset(\"FIRST_NAME_USER\");",
+							"pm.environment.unset(\"LAST_NAME_USER\");",
+							"pm.environment.unset(\"LOCALE_USER\");",
+							"pm.environment.unset(\"ACCESS_TOKEN\");",
+							"pm.environment.unset(\"CLIENT\");",
+							"pm.environment.unset(\"UID\");",
+							"pm.environment.unset(\"EXPIRE\");",
+							"pm.environment.unset(\"ID_USER\");",
+							"pm.environment.unset(\"ID_BOOK\");",
+							""
 						],
 						"type": "text/javascript"
 					}

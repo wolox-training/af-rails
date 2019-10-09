@@ -355,7 +355,20 @@
 							"    pm.expect(jsonData.book_id).to.equal(pm.globals.get(\"ID_BOOK\"));",
 							"    pm.expect(jsonData.start_date).to.equal(request.data.start_date);",
 							"    pm.expect(jsonData.end_date).to.equal(request.data.end_date);",
-							"});"
+							"});",
+							"",
+							"//Liberacion de variables",
+							"pm.environment.unset(\"EMAIL_USER\");",
+							"pm.environment.unset(\"PASSWORD_USER\");",
+							"pm.environment.unset(\"FIRST_NAME_USER\");",
+							"pm.environment.unset(\"LAST_NAME_USER\");",
+							"pm.environment.unset(\"LOCALE_USER\");",
+							"pm.environment.unset(\"ACCESS_TOKEN\");",
+							"pm.environment.unset(\"CLIENT\");",
+							"pm.environment.unset(\"UID\");",
+							"pm.environment.unset(\"EXPIRE\");",
+							"pm.environment.unset(\"ID_USER\");",
+							"pm.environment.unset(\"ID_BOOK\");"
 						],
 						"type": "text/javascript"
 					}
@@ -420,75 +433,6 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "{{HOST}}/api/v1/rent",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"rent"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Index Rent",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6b5e183b-3856-4067-bffa-f288ff9c7cc9",
-						"exec": [
-							"pm.test(\"Payload must be valid and have a body\", function () { ",
-							"     pm.response.to.be.ok; // equivalente a decir que valide que sea 200",
-							"     pm.response.to.be.withBody; // body tiene que exitir",
-							"     pm.response.to.be.json; // además que sea un JSON válido",
-							"    });",
-							"// Pedimos a nuestro response payload que tengo Content-Type en el header",
-							"pm.test(\"Content-Type is present\", function () {",
-							"    pm.response.to.have.header(\"Content-Type\");",
-							"    });",
-							"// Y comprobamos que la petición se haya servido en un determinado tiempo",
-							"pm.test(\"Response time is less than 400ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(400);",
-							"    });"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "access-token",
-						"value": "{{ACCESS_TOKEN}}",
-						"type": "text"
-					},
-					{
-						"key": "client",
-						"value": "{{CLIENT}}",
-						"type": "text"
-					},
-					{
-						"key": "expire",
-						"value": "{{EXPIRE}}",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					},
-					{
-						"key": "uid",
-						"value": "{{UID}}",
-						"type": "text"
-					}
-				],
 				"url": {
 					"raw": "{{HOST}}/api/v1/rent",
 					"host": [
