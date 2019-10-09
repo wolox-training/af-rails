@@ -146,6 +146,18 @@
 		},
 		{
 			"name": "Create Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cecb155c-5dfc-4184-b08d-c6b1c7863e4d",
+						"exec": [
+							"pm.globals.set(\"ID\", JSON.parse(responseBody).id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -283,7 +295,7 @@
 					"formdata": [
 						{
 							"key": "book_id",
-							"value": "3",
+							"value": "{{ID}}",
 							"type": "text"
 						},
 						{

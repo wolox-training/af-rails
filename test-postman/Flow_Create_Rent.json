@@ -73,10 +73,10 @@
 					"script": {
 						"id": "6c2abb52-497f-4495-b67d-aae08bee894b",
 						"exec": [
-							"postman.setGlobalVariable(\"ACCESS_TOKEN\",postman.getResponseHeader(\"access-token\"));",
-							"postman.setGlobalVariable(\"CLIENT\",postman.getResponseHeader(\"client\"));",
-							"postman.setGlobalVariable(\"UID\",postman.getResponseHeader(\"uid\"));",
-							"postman.setGlobalVariable(\"EXPIRE\",postman.getResponseHeader(\"expiry\"));"
+							"pm.globals.set(\"ACCESS_TOKEN\",postman.getResponseHeader(\"access-token\"));",
+							"pm.globals.set(\"CLIENT\",postman.getResponseHeader(\"client\"));",
+							"pm.globals.set(\"UID\",postman.getResponseHeader(\"uid\"));",
+							"pm.globals.set(\"EXPIRE\",postman.getResponseHeader(\"expiry\"));"
 						],
 						"type": "text/javascript"
 					}
@@ -153,8 +153,25 @@
 						"id": "fd9fa4fb-739e-41e3-8468-c217d588ad00",
 						"exec": [
 							"pm.test(\"Content of response\", function () {",
-							"    pm.response.to.have.body(\"a\");",
-							"    });"
+							"    pm.expect(request.data[\"gender\"]).to.equal('Genero1');",
+							"    pm.expect(request.data[\"author\"]).to.equal('Autor1');",
+							"    pm.expect(request.data[\"image\"]).to.equal('Imagen1');",
+							"    pm.expect(request.data[\"title\"]).to.equal('Titulo1');",
+							"    pm.expect(request.data[\"editor\"]).to.equal('Editorial1');",
+							"    pm.expect(request.data[\"year\"]).to.equal('10-10-2019');",
+							"});",
+							"",
+							"pm.globals.set(\"ID\", JSON.parse(responseBody).id);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d19fab11-579b-4128-a863-ae7bb0047fb3",
+						"exec": [
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -260,9 +277,7 @@
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(300);",
 							"    });",
-							"pm.test(\"Content of response\", function () {",
-							"    pm.response.to.have.body(\"a\");",
-							"    });"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -312,7 +327,7 @@
 					"formdata": [
 						{
 							"key": "book_id",
-							"value": "1",
+							"value": "{{ID}}",
 							"type": "text"
 						},
 						{

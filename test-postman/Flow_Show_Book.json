@@ -147,6 +147,18 @@
 		},
 		{
 			"name": "Create Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "35c93f43-d6e2-45b5-9682-1bb9d3e8f3cb",
+						"exec": [
+							"pm.globals.set(\"ID\", JSON.parse(responseBody).id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -302,7 +314,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/book/4",
+					"raw": "{{HOST}}/api/v1/book/{{ID}}",
 					"host": [
 						"{{HOST}}"
 					],
@@ -310,7 +322,7 @@
 						"api",
 						"v1",
 						"book",
-						"4"
+						"{{ID}}"
 					]
 				}
 			},
