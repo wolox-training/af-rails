@@ -7,6 +7,47 @@
 	"item": [
 		{
 			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c73eddaa-b030-4a82-9a96-794872e8aa60",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Payload must be valid and have a body\", function () { ",
+							"    pm.response.to.have.status(200); // equivalente al codigo de estado de creacion",
+							"    pm.response.to.be.withBody; // body tiene que exitir",
+							"    pm.response.to.be.json; // además que sea un JSON válido",
+							"    });",
+							"    ",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    });",
+							"",
+							"pm.test(\"Response time is less than 850ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(850);",
+							"    });",
+							"",
+							"pm.test(\"Check JSON User\", function () {",
+							"    pm.expect(jsonData.data.email).to.equal(request.data.email);",
+							"    pm.expect(jsonData.data.first_name).to.equal(request.data.first_name);",
+							"    pm.expect(jsonData.data.last_name).to.equal(request.data.last_name);",
+							"    pm.expect(jsonData.data.locale).to.equal(request.data.locale);",
+							"});",
+							"",
+							"pm.environment.set(\"EMAIL_USER\", request.data.email);",
+							"pm.environment.set(\"PASSWORD_USER\", request.data.password);",
+							"pm.environment.set(\"FIRST_NAME_USER\", request.data.first_name);",
+							"pm.environment.set(\"LAST_NAME_USER\", request.data.last_name);",
+							"pm.environment.set(\"LOCALE_USER\", request.data.locale);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -32,7 +73,7 @@
 						},
 						{
 							"key": "locale",
-							"value": "es",
+							"value": "en",
 							"type": "text"
 						},
 						{
@@ -73,11 +114,34 @@
 					"script": {
 						"id": "db497c5f-e728-4758-ae42-1f91e7e24446",
 						"exec": [
-							"var jsonData=pm.response.json();",
-							"postman.setGlobalVariable(\"ACCESS_TOKEN\",postman.getResponseHeader(\"access-token\"));",
-							"postman.setGlobalVariable(\"CLIENT\",postman.getResponseHeader(\"client\"));",
-							"postman.setGlobalVariable(\"UID\",postman.getResponseHeader(\"uid\"));",
-							"postman.setGlobalVariable(\"EXPIRE\",postman.getResponseHeader(\"expiry\"));"
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Payload must be valid and have a body\", function () { ",
+							"    pm.response.to.have.status(200); // equivalente al codigo de estado de creacion",
+							"    pm.response.to.be.withBody; // body tiene que exitir",
+							"    pm.response.to.be.json; // además que sea un JSON válido",
+							"    });",
+							"    ",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    });",
+							"",
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);",
+							"    });",
+							"",
+							"pm.test(\"Check JSON User Login\", function () {",
+							"    pm.expect(jsonData.data.email).to.equal(request.data.email);",
+							"    pm.expect(jsonData.data.first_name).to.equal(pm.globals.get(\"FIRST_NAME_USER\"));",
+							"    pm.expect(jsonData.data.last_name).to.equal(pm.globals.get(\"LAST_NAME_USER\"));",
+							"    pm.expect(jsonData.data.locale).to.equal(pm.globals.get(\"LOCALE_USER\"));",
+							"});",
+							"",
+							"pm.environment.set(\"ACCESS_TOKEN\",postman.getResponseHeader(\"access-token\"));",
+							"pm.environment.set(\"CLIENT\",postman.getResponseHeader(\"client\"));",
+							"pm.environment.set(\"UID\",postman.getResponseHeader(\"uid\"));",
+							"pm.environment.set(\"EXPIRE\",postman.getResponseHeader(\"expiry\"));",
+							"pm.environment.set(\"ID_USER\", jsonData.data.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -122,12 +186,12 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "test4@hotmail.com",
+							"value": "{{EMAIL_USER}}",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "123456789",
+							"value": "{{PASSWORD_USER}}",
 							"type": "text"
 						}
 					]
@@ -153,7 +217,40 @@
 					"script": {
 						"id": "35c93f43-d6e2-45b5-9682-1bb9d3e8f3cb",
 						"exec": [
-							"pm.globals.set(\"ID\", JSON.parse(responseBody).id);"
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Payload must be valid and have a body\", function () { ",
+							"    pm.response.to.have.status(201); // equivalente al codigo de estado de creacion",
+							"    pm.response.to.be.withBody; // body tiene que exitir",
+							"    pm.response.to.be.json; // además que sea un JSON válido",
+							"    });",
+							"    ",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    });",
+							"",
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);",
+							"    });",
+							"    ",
+							"pm.test(\"Check JSON book\", function () {",
+							"    pm.expect(jsonData.gender).to.equal(request.data.gender);",
+							"    pm.expect(jsonData.author).to.equal(request.data.author);",
+							"    pm.expect(jsonData.image).to.equal(request.data.image);",
+							"    pm.expect(jsonData.title).to.equal(request.data.title);",
+							"    pm.expect(jsonData.editor).to.equal(request.data.editor);",
+							"    pm.expect(jsonData.year).to.equal(request.data.year);",
+							"});",
+							"",
+							"pm.globals.set(\"ID_BOOK\", JSON.parse(responseBody).id);",
+							"pm.globals.set(\"GENDER_BOOK\", jsonData.gender);",
+							"pm.globals.set(\"AUTHOR_BOOK\", jsonData.author);",
+							"pm.globals.set(\"IMAGE_BOOK\", jsonData.image);",
+							"pm.globals.set(\"TITTLE_BOOK\", jsonData.title);",
+							"pm.globals.set(\"EDITOR_BOOK\", jsonData.editor);",
+							"pm.globals.set(\"YEAR_BOOK\", jsonData.year);",
+							"",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -257,18 +354,30 @@
 						"id": "9ab13e02-cae1-436c-9ee7-005dc3d9aadd",
 						"exec": [
 							"pm.test(\"Payload must be valid and have a body\", function () { ",
-							"     pm.response.to.be.ok; // equivalente a decir que valide que sea 200",
-							"     pm.response.to.be.withBody; // body tiene que exitir",
-							"     pm.response.to.be.json; // además que sea un JSON válido",
+							"    pm.response.to.have.status(200); // equivalente al codigo de estado de creacion",
+							"    pm.response.to.be.withBody; // body tiene que exitir",
+							"    pm.response.to.be.json; // además que sea un JSON válido",
 							"    });",
-							"// Pedimos a nuestro response payload que tengo Content-Type en el header",
+							"    ",
 							"pm.test(\"Content-Type is present\", function () {",
 							"    pm.response.to.have.header(\"Content-Type\");",
 							"    });",
-							"// Y comprobamos que la petición se haya servido en un determinado tiempo",
-							"pm.test(\"Response time is less than 200ms\", function () {",
+							"",
+							"pm.test(\"Response time is less than 300ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(300);",
-							"    });"
+							"    });",
+							"    ",
+							"pm.test(\"Check JSON book\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.equal(pm.globals.get(\"ID_BOOK\"));",
+							"    pm.expect(jsonData.gender).to.equal(pm.globals.get(\"GENDER_BOOK\"));",
+							"    pm.expect(jsonData.author).to.equal(pm.globals.get(\"AUTHOR_BOOK\"));",
+							"    pm.expect(jsonData.image).to.equal(pm.globals.get(\"IMAGE_BOOK\"));",
+							"    pm.expect(jsonData.title).to.equal(pm.globals.get(\"TITTLE_BOOK\"));",
+							"    pm.expect(jsonData.editor).to.equal(pm.globals.get(\"EDITOR_BOOK\"));",
+							"    pm.expect(jsonData.year).to.equal(pm.globals.get(\"YEAR_BOOK\"));",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -314,7 +423,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/book/{{ID}}",
+					"raw": "{{HOST}}/api/v1/book/{{ID_BOOK}}",
 					"host": [
 						"{{HOST}}"
 					],
@@ -322,7 +431,7 @@
 						"api",
 						"v1",
 						"book",
-						"{{ID}}"
+						"{{ID_BOOK}}"
 					]
 				}
 			},
