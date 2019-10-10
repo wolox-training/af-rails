@@ -6,6 +6,39 @@
 	},
 	"item": [
 		{
+			"name": "Integration Gherkin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "509c5819-2bd7-4bc3-ad32-6eb4a5da21ce",
+						"exec": [
+							"postman.setGlobalVariable('postmanBDD', responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jamesmessinger.com/postman-bdd/dist/postman-bdd.min.js",
+					"protocol": "https",
+					"host": [
+						"jamesmessinger",
+						"com"
+					],
+					"path": [
+						"postman-bdd",
+						"dist",
+						"postman-bdd.min.js"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create User",
 			"event": [
 				{
