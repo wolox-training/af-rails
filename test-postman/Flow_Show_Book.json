@@ -13,7 +13,12 @@
 					"script": {
 						"id": "509c5819-2bd7-4bc3-ad32-6eb4a5da21ce",
 						"exec": [
-							"postman.setGlobalVariable('postmanBDD', responseBody);"
+							"postman.setGlobalVariable('postmanBDD', responseBody);",
+							"",
+							"pm.test(\"Payload must be valid and have a body\", function () { ",
+							"    pm.response.to.have.status(200); ",
+							"});",
+							"    "
 						],
 						"type": "text/javascript"
 					}
