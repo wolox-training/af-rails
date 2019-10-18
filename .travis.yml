@@ -33,6 +33,7 @@ script:
   - npm --version
   - npm install newman
   - npm --version
+  - npm install -g newman-reporter-htmlextra
   - gem install bundler
   - bundle exec rspec spec -fd
   - bundle exec rubocop app spec -R --format simple
