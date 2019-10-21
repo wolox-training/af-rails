@@ -1,5 +1,8 @@
 {
   "name": "wbooks-api",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "newman-reporter-htmlextra": "^1.8.9",
+    "newman-reporter-teamcity": "^0.1.12"
+  }
 }

@@ -1,0 +1,99 @@
+{
+	"id": "4b3aeb12-0e70-44d6-81a0-480c6b168e37",
+	"name": "Heroku",
+	"values": [
+		{
+			"key": "HOST",
+			"value": "https://api-wbooks.herokuapp.com",
+			"enabled": true
+		},
+		{
+			"key": "AUTHOR",
+			"value": "45bj42298j52",
+			"enabled": true
+		},
+		{
+			"key": "EDITOR",
+			"value": "6abi86gf33239",
+			"enabled": true
+		},
+		{
+			"key": "GENDER",
+			"value": "iif1e8bice1c",
+			"enabled": true
+		},
+		{
+			"key": "IMAGE",
+			"value": "268d3g30ah482",
+			"enabled": true
+		},
+		{
+			"key": "TITTLE",
+			"value": "846i7c4hf885g",
+			"enabled": true
+		},
+		{
+			"key": "YEAR",
+			"value": "1990-12-21",
+			"enabled": true
+		},
+		{
+			"key": "ID_BOOK",
+			"value": 44,
+			"enabled": true
+		},
+		{
+			"key": "EMAIL_USER",
+			"value": "dishonest.midnight@gmail.com",
+			"enabled": true
+		},
+		{
+			"key": "FIRST_NAME",
+			"value": "Dishonest",
+			"enabled": true
+		},
+		{
+			"key": "LAST_NAME",
+			"value": "Midnight",
+			"enabled": true
+		},
+		{
+			"key": "PASSWORD",
+			"value": "h331a8eb",
+			"enabled": true
+		},
+		{
+			"key": "LOCALE_USER",
+			"value": "es",
+			"enabled": true
+		},
+		{
+			"key": "ACCESS_TOKEN",
+			"value": "dAWDNwW1nhrMeti1T7am6w",
+			"enabled": true
+		},
+		{
+			"key": "CLIENT",
+			"value": "8t8fc1eFo81ol6t01ASlww",
+			"enabled": true
+		},
+		{
+			"key": "EXPIRE",
+			"value": "1572623514",
+			"enabled": true
+		},
+		{
+			"key": "ID_USER",
+			"value": 107,
+			"enabled": true
+		},
+		{
+			"key": "UID",
+			"value": "dishonest.midnight@gmail.com",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-10-18T17:23:37.682Z",
+	"_postman_exported_using": "Postman/7.9.0"
+}

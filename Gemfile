@@ -45,6 +45,7 @@ gem 'rails_admin', '~> 2.0.0.rc'
 gem "interactor", "~> 3.0"
 gem 'rswag-api'
 gem 'rswag-ui'
+gem 'newman'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
